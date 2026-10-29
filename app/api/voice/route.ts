@@ -33,6 +33,15 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message ?? 'Voice synthesis failed' }, { status: 500 });
+    console.error('[git-seance] /api/voice error:', err);
+    return NextResponse.json(
+      { error: err.message ?? 'Voice synthesis failed' },
+      {
+        status: 500,
+        headers: {
+          'X-Voice-Error': String(err.message ?? 'Unknown error').slice(0, 200),
+        },
+      }
+    );
   }
 }
