@@ -16,7 +16,7 @@ export async function synthesizeGhostVoice(
   customVoiceId?: string
 ): Promise<VoiceResult> {
   const apiKey = (customApiKey || process.env.ELEVENLABS_API_KEY || '').trim();
-  const voiceId = (customVoiceId || process.env.ELEVENLABS_VOICE_ID || 'ojn2kWeYf952uoRFN8K8').trim();
+  const voiceId = (customVoiceId || process.env.ELEVENLABS_VOICE_ID || 'LcaaNe2dsyAcAvOUA7al').trim();
 
   // Strip stage directions like *a cold wind passes* so TTS only speaks natural dialogue
   const cleanedText = text
