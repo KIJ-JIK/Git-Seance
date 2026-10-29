@@ -7,9 +7,10 @@ import type { GhostPersona } from '@/lib/ghost';
 interface Props {
   repo: RepoIngestion;
   persona: GhostPersona;
+  onSpeak?: (text: string) => void;
 }
 
-export default function TombstoneCard({ repo, persona }: Props) {
+export default function TombstoneCard({ repo, persona, onSpeak }: Props) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const exportPNG = async () => {
@@ -118,10 +119,22 @@ export default function TombstoneCard({ repo, persona }: Props) {
         )}
       </div>
 
-      {/* Export button */}
-      <button onClick={exportPNG} className="btn-ghost" style={{ fontSize: '0.8rem' }}>
-        📸 Export as PNG
-      </button>
+      {/* Actions */}
+      <div className="flex gap-2">
+        {onSpeak && (
+          <button
+            onClick={() => onSpeak(persona.epitaph)}
+            className="btn-ghost flex items-center gap-1.5"
+            style={{ fontSize: '0.8rem', cursor: 'pointer' }}
+            title="Hear Ghost Recite Epitaph"
+          >
+            🔊 Recite Epitaph
+          </button>
+        )}
+        <button onClick={exportPNG} className="btn-ghost" style={{ fontSize: '0.8rem', cursor: 'pointer' }}>
+          📸 Export as PNG
+        </button>
+      </div>
     </div>
   );
 }

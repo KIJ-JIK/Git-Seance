@@ -522,6 +522,7 @@ export default function SeancePage() {
                 epitaph: `Here lies ${repo.metadata.name}. Never merged. Never forgotten.`,
                 voiceStyle: 'spectral',
               }}
+              onSpeak={(text) => speakText(text)}
             />
             <div className="flex gap-3">
               <button onClick={submitToGraveyard} className="btn-primary">
