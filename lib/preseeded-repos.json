@@ -1,0 +1,2144 @@
+{
+  "wayneeseguin/autozest": {
+    "metadata": {
+      "name": "autozest",
+      "fullName": "wayneeseguin/autozest",
+      "description": "AutoZest is an autotest addon that: * automated growl installation * generation of .autotest with growl & autozest config * generation of .autozest.yml config file * autozest.sqlite3 database file for pulling random messages based on severity",
+      "language": "Ruby",
+      "stars": 9,
+      "forks": 6,
+      "createdAt": "2008-02-01T16:37:51Z",
+      "updatedAt": "2026-06-30T12:07:32Z",
+      "pushedAt": "2008-03-26T19:10:50Z",
+      "archived": true,
+      "topics": [],
+      "defaultBranch": "master",
+      "owner": "wayneeseguin",
+      "htmlUrl": "https://github.com/wayneeseguin/autozest"
+    },
+    "commits": [
+      {
+        "sha": "ebb461f",
+        "message": "Updated to current.",
+        "author": "Wayne E. Seguin",
+        "date": "2008-02-01T16:38:08Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/ebb461ff9580cfe329712c6cb768a785b9529a38"
+      },
+      {
+        "sha": "629c22e",
+        "message": "Adjusted parsing code to handle the case where there are no pending specs.",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T21:40:40Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/629c22e694b84493223ac4a1f3ffbb49039c047e"
+      },
+      {
+        "sha": "10925db",
+        "message": "Switched Version to AutoZest::Version in Rakefile",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T21:20:55Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/10925db44a8a91975c4c686e175536dfc1bfebe9"
+      },
+      {
+        "sha": "0bfaa59",
+        "message": "Fixed parse method regex for parsing autotest output.",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T20:21:52Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/0bfaa59c225057a80fc5a9a3768f91be2198884d"
+      },
+      {
+        "sha": "14f3bfa",
+        "message": "Our first working version!",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T05:16:56Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/14f3bfacb2ae953800e89765554a26462a9550aa"
+      },
+      {
+        "sha": "f9ee90b",
+        "message": "It works!!! Holy shit our code actually WORKS!!!",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T05:16:55Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/f9ee90bdaabdfc6826eaab582b79e2d57eb0bdd8"
+      },
+      {
+        "sha": "a461a26",
+        "message": "autotest is now in color!",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T04:33:03Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/a461a26b7310fdba529defae3c678442cc3dec70"
+      },
+      {
+        "sha": "0f8146c",
+        "message": "autotest now works for autozest :)",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T04:33:02Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/0f8146cb4696e44203d372e421e99dc77ab2e875"
+      },
+      {
+        "sha": "23eb4db",
+        "message": "Autotest is almost working, only now have to specify spec command.",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T04:03:33Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/23eb4db0eb72d125f6970a7246b0594284761639"
+      },
+      {
+        "sha": "a70aaa9",
+        "message": "Committing our work from this evening.",
+        "author": "wayneeseguin",
+        "date": "2007-12-11T03:51:32Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/a70aaa9fc89b190e65c7db00e19fa80bcabe265d"
+      },
+      {
+        "sha": "febf107",
+        "message": "Added sample autotest file, fail & pass images.",
+        "author": "wayneeseguin",
+        "date": "2007-12-10T04:12:30Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/febf1079ebdd4f1eec69754eae701ad2ef817547"
+      },
+      {
+        "sha": "b645f83",
+        "message": "More progress.",
+        "author": "wayneeseguin",
+        "date": "2007-12-09T19:42:10Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/b645f83c47b8c5145db30f28ff157393dace2994"
+      },
+      {
+        "sha": "3e56d51",
+        "message": "Can now run specs :)",
+        "author": "wayneeseguin",
+        "date": "2007-12-05T16:19:20Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/3e56d51673e0ff557d7230cb78c6b9fd34bea356"
+      },
+      {
+        "sha": "457b8f6",
+        "message": "Initial checkin, beginnings of the application's structure.",
+        "author": "wayneeseguin",
+        "date": "2007-12-05T16:07:24Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/457b8f6cbfe37bf8aaa90a02b1a85d072548fccb"
+      },
+      {
+        "sha": "9e9e478",
+        "message": "Creating trunk directory.",
+        "author": "wayneeseguin",
+        "date": "2007-12-04T03:42:16Z",
+        "url": "https://github.com/wayneeseguin/autozest/commit/9e9e4783d4f91d68684c1d5e2414ad3961dfa31f"
+      }
+    ],
+    "files": [
+      {
+        "name": "CHANGELOG",
+        "path": "CHANGELOG",
+        "type": "blob",
+        "size": 56,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/CHANGELOG"
+      },
+      {
+        "name": "COPYING",
+        "path": "COPYING",
+        "type": "blob",
+        "size": 2356,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/COPYING"
+      },
+      {
+        "name": "README",
+        "path": "README",
+        "type": "blob",
+        "size": 521,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/README"
+      },
+      {
+        "name": "Rakefile",
+        "path": "Rakefile",
+        "type": "blob",
+        "size": 6760,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/Rakefile"
+      },
+      {
+        "name": "TODO",
+        "path": "TODO",
+        "type": "blob",
+        "size": 156,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/TODO"
+      },
+      {
+        "name": "autozest_rspec.rb",
+        "path": "autotest/autozest_rspec.rb",
+        "type": "blob",
+        "size": 3044,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/autotest/autozest_rspec.rb"
+      },
+      {
+        "name": "discover.rb",
+        "path": "autotest/discover.rb",
+        "type": "blob",
+        "size": 43,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/autotest/discover.rb"
+      },
+      {
+        "name": "autozest_generator.rb",
+        "path": "autozest_generators/autozest_generator.rb",
+        "type": "blob",
+        "size": 1616,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/autozest_generators/autozest_generator.rb"
+      },
+      {
+        "name": "autozest",
+        "path": "bin/autozest",
+        "type": "blob",
+        "size": 372,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/bin/autozest"
+      },
+      {
+        "name": "install",
+        "path": "bin/install",
+        "type": "blob",
+        "size": 226,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/bin/install"
+      },
+      {
+        "name": "spec",
+        "path": "bin/spec",
+        "type": "blob",
+        "size": 13,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/bin/spec"
+      },
+      {
+        "name": "config.yml",
+        "path": "examples/config.yml",
+        "type": "blob",
+        "size": 312,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/examples/config.yml"
+      },
+      {
+        "name": "dot_autotest",
+        "path": "examples/dot_autotest",
+        "type": "blob",
+        "size": 234,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/examples/dot_autotest"
+      },
+      {
+        "name": "fail.png",
+        "path": "images/fail.png",
+        "type": "blob",
+        "size": 98366,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/images/fail.png"
+      },
+      {
+        "name": "pass.png",
+        "path": "images/pass.png",
+        "type": "blob",
+        "size": 100293,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/images/pass.png"
+      },
+      {
+        "name": "autozest.rb",
+        "path": "lib/autozest.rb",
+        "type": "blob",
+        "size": 517,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest.rb"
+      },
+      {
+        "name": "config.rb",
+        "path": "lib/autozest/config.rb",
+        "type": "blob",
+        "size": 633,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest/config.rb"
+      },
+      {
+        "name": "generator.rb",
+        "path": "lib/autozest/generator.rb",
+        "type": "blob",
+        "size": 43,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest/generator.rb"
+      },
+      {
+        "name": "installer.rb",
+        "path": "lib/autozest/installer.rb",
+        "type": "blob",
+        "size": 43,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest/installer.rb"
+      },
+      {
+        "name": "notifier.rb",
+        "path": "lib/autozest/notifier.rb",
+        "type": "blob",
+        "size": 3694,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest/notifier.rb"
+      },
+      {
+        "name": "updater.rb",
+        "path": "lib/autozest/updater.rb",
+        "type": "blob",
+        "size": 41,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/autozest/updater.rb"
+      },
+      {
+        "name": "erubis_ext.rb",
+        "path": "lib/erubis_ext.rb",
+        "type": "blob",
+        "size": 260,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/lib/erubis_ext.rb"
+      },
+      {
+        "name": "autozest_spec.rb",
+        "path": "spec/autozest_spec.rb",
+        "type": "blob",
+        "size": 1458,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/spec/autozest_spec.rb"
+      },
+      {
+        "name": "spec.opts",
+        "path": "spec/spec.opts",
+        "type": "blob",
+        "size": 59,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/spec/spec.opts"
+      },
+      {
+        "name": "spec_helper.rb",
+        "path": "spec/spec_helper.rb",
+        "type": "blob",
+        "size": 81,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/spec/spec_helper.rb"
+      },
+      {
+        "name": "atom.rb",
+        "path": "website/atom.rb",
+        "type": "blob",
+        "size": 1610,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/website/atom.rb"
+      },
+      {
+        "name": "default.css",
+        "path": "website/src/default.css",
+        "type": "blob",
+        "size": 3432,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/website/src/default.css"
+      },
+      {
+        "name": "default.template",
+        "path": "website/src/default.template",
+        "type": "blob",
+        "size": 3173,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/website/src/default.template"
+      },
+      {
+        "name": "background.gif",
+        "path": "website/src/images/background.gif",
+        "type": "blob",
+        "size": 677,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/website/src/images/background.gif"
+      },
+      {
+        "name": "index.page",
+        "path": "website/src/index.page",
+        "type": "blob",
+        "size": 134,
+        "url": "https://github.com/wayneeseguin/autozest/blob/master/website/src/index.page"
+      }
+    ],
+    "readme": "= About\n\nAutoZest is an autotest extension\n\n= Author\n\n  Wayne E. Seguin (wayneeseguin at gmail dot com)\n\n= Features\n\n* automated growl installation\n  $ autozest install growl\n\n* generation of .autotest with growl & autozest config\n  $ autozest setup autotest\n\n* generation of .autozest.yml config file\n  $ autozest setup\n\n* autozest.sqlite3 database file for pulling random messages based on severity, update via:\n  $ autozest update\n\nNotes:\n\n* config file can specify extra image fetching options\n* dependency: ZenTest\n\n",
+    "languages": {
+      "Ruby": 13083
+    }
+  },
+  "defunkt/ambitious_activeldap": {
+    "metadata": {
+      "name": "ambitious_activeldap",
+      "fullName": "defunkt/ambitious_activeldap",
+      "description": "Ambition adapter for ActiveLdap",
+      "language": "Ruby",
+      "stars": 16,
+      "forks": 14,
+      "createdAt": "2008-01-30T19:20:08Z",
+      "updatedAt": "2026-09-05T09:07:29Z",
+      "pushedAt": "2008-03-26T19:10:57Z",
+      "archived": false,
+      "topics": [],
+      "defaultBranch": "master",
+      "owner": "defunkt",
+      "htmlUrl": "https://github.com/defunkt/ambitious_activeldap"
+    },
+    "commits": [
+      {
+        "sha": "5eced32",
+        "message": "gotta add the file in question, yep",
+        "author": "Chris Wanstrath",
+        "date": "2008-03-09T18:31:09Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/5eced32ace05d091c34371a5297cc932245ba06b"
+      },
+      {
+        "sha": "d859e1e",
+        "message": "move README to README.textile",
+        "author": "Chris Wanstrath",
+        "date": "2008-03-09T18:30:32Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/d859e1e1202278ec7afcd8faa23c715be8b211a6"
+      },
+      {
+        "sha": "48dcca2",
+        "message": "version fix",
+        "author": "Matthew King",
+        "date": "2008-01-31T20:22:53Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/48dcca2c7ffea15fc3f8c981b8b9a2935baf99b5"
+      },
+      {
+        "sha": "c4cf058",
+        "message": "require ActiveLdap 0.9.0, because they changed the gem name",
+        "author": "Matthew King",
+        "date": "2008-01-31T20:02:02Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/c4cf05857d0916a30c42d84f20c13e0e3fb1579b"
+      },
+      {
+        "sha": "9eae508",
+        "message": "adjusted query kick to actually match spec, hey!",
+        "author": "Matthew King",
+        "date": "2008-01-31T20:00:11Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/9eae508b723848892c2f4444c52a496a964a32c3"
+      },
+      {
+        "sha": "f2b5bea",
+        "message": "clarification of example",
+        "author": "Matthew King",
+        "date": "2008-01-31T01:46:45Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/f2b5bea2ef1338c4890d5cfd0934b640cdc2289b"
+      },
+      {
+        "sha": "b41298a",
+        "message": "updated manifest",
+        "author": "Matthew King",
+        "date": "2008-01-31T01:44:51Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/b41298a74e3a83317f527c36fe1f13d55b2046b8"
+      },
+      {
+        "sha": "79fbd28",
+        "message": "removed to_hash as useless",
+        "author": "Matthew King",
+        "date": "2008-01-31T01:43:46Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/79fbd286a0eedcc6965892077bafd4df371a2727"
+      },
+      {
+        "sha": "01db224",
+        "message": "updated license and Rakefile author info; changed readme for ldap",
+        "author": "Matthew King",
+        "date": "2008-01-31T01:42:57Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/01db224c5842e4752362dc2582b6866ae373b143"
+      },
+      {
+        "sha": "6220a5f",
+        "message": "copied from ambition",
+        "author": "Matthew King",
+        "date": "2008-01-30T20:06:34Z",
+        "url": "https://github.com/defunkt/ambitious_activeldap/commit/6220a5f0b7daee780f55a55eaf68b907201295f3"
+      }
+    ],
+    "files": [
+      {
+        "name": "LICENSE",
+        "path": "LICENSE",
+        "type": "blob",
+        "size": 1085,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/LICENSE"
+      },
+      {
+        "name": "Manifest",
+        "path": "Manifest",
+        "type": "blob",
+        "size": 274,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/Manifest"
+      },
+      {
+        "name": "README.textile",
+        "path": "README.textile",
+        "type": "blob",
+        "size": 1443,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/README.textile"
+      },
+      {
+        "name": "Rakefile",
+        "path": "Rakefile",
+        "type": "blob",
+        "size": 828,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/Rakefile"
+      },
+      {
+        "name": "active_ldap.rb",
+        "path": "lib/ambition/adapters/active_ldap.rb",
+        "type": "blob",
+        "size": 285,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/lib/ambition/adapters/active_ldap.rb"
+      },
+      {
+        "name": "base.rb",
+        "path": "lib/ambition/adapters/active_ldap/base.rb",
+        "type": "blob",
+        "size": 272,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/lib/ambition/adapters/active_ldap/base.rb"
+      },
+      {
+        "name": "query.rb",
+        "path": "lib/ambition/adapters/active_ldap/query.rb",
+        "type": "blob",
+        "size": 452,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/lib/ambition/adapters/active_ldap/query.rb"
+      },
+      {
+        "name": "select.rb",
+        "path": "lib/ambition/adapters/active_ldap/select.rb",
+        "type": "blob",
+        "size": 1279,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/lib/ambition/adapters/active_ldap/select.rb"
+      },
+      {
+        "name": "enumerable_test.rb",
+        "path": "test/enumerable_test.rb",
+        "type": "blob",
+        "size": 2748,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/test/enumerable_test.rb"
+      },
+      {
+        "name": "helper.rb",
+        "path": "test/helper.rb",
+        "type": "blob",
+        "size": 489,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/test/helper.rb"
+      },
+      {
+        "name": "integration_test.rb",
+        "path": "test/integration_test.rb",
+        "type": "blob",
+        "size": 215,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/test/integration_test.rb"
+      },
+      {
+        "name": "select_test.rb",
+        "path": "test/select_test.rb",
+        "type": "blob",
+        "size": 2638,
+        "url": "https://github.com/defunkt/ambitious_activeldap/blob/master/test/select_test.rb"
+      }
+    ],
+    "readme": "h2. An Ambitious ActiveLdap Adapter\n\nWrite LDAP search filters in Ruby.  Awesomeness courtesy of Chris Wanstrath's Ambition library.\n\nYou must be using ActiveLdap 0.9 or greater.\n\nh2. Get It \n\n@$ sudo gem install ambitious-activeldap@\n\n\n<pre>\nrequire 'rubygems'\nrequire 'ambition/adapters/active_ldap'\n</pre>\n\nh2. Examples\n\nLet @User@ be a subclass of @ActiveLdap::Base@\n\n<ruby>\nUser.select { |u| u.givenName == 'Severian' }.each do |user|\n  puts user.name\nend\n</ruby>\n\nQueries don't run until you kick them. This adapter supports only the basic kicker methods: @each@, @each_with_index@, @map@, @entries@, @to_a@. \n\nThis adapter also doesn't support the methods that require sorting, slicing, or counting, because OpenLDAP effectively doesn't support such things.  ActiveLdap lets you request sorted and sliced result sets, but it does the work in Ruby, so you might as well do it yourself.\n\nYou can call @to_s@, but not @to_hash@ on a query.  @to_s@ returns the LDAP search filter as a string.\n\n<ruby>\n>> User.select { |m| m.givenName == 'Jonas' }.to_s\n=> \"(givenName=Jonas)\"\n</ruby>\n\n\n\nh2. Issues.find(:all, :filter => \"(type=bug)\") \n\nFound a bug?  Sweet.  Add it at \"the Lighthouse\":http://err.lighthouseapp.com/projects/466-plugins/tickets/new.\n\nMore information on Ambition:\n\n  * \"http://ambition.rubyforge.org\":http://ambition.rubyforge.org\n  * \"http://groups.google.com/group/ambition-rb/\":http://groups.google.com/group/ambition-rb/\n\n",
+    "languages": {
+      "Ruby": 8378
+    }
+  },
+  "hornbeck/blerb-core": {
+    "metadata": {
+      "name": "blerb-core",
+      "fullName": "hornbeck/blerb-core",
+      "description": "blerb running on merb-core",
+      "language": "Ruby",
+      "stars": 30,
+      "forks": 10,
+      "createdAt": "2008-02-06T13:50:43Z",
+      "updatedAt": "2026-07-29T02:10:30Z",
+      "pushedAt": "2008-03-26T19:12:03Z",
+      "archived": false,
+      "topics": [],
+      "defaultBranch": "master",
+      "owner": "hornbeck",
+      "htmlUrl": "https://github.com/hornbeck/blerb-core"
+    },
+    "commits": [
+      {
+        "sha": "cfbe865",
+        "message": "Adjusted spec to reflect changes in merb-core",
+        "author": "Sean Braithwaite",
+        "date": "2008-03-24T21:14:32Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/cfbe86545f97d2a058abf3fe7b63bfb22a5c9c3d"
+      },
+      {
+        "sha": "a4a6480",
+        "message": "minor tweaks for 0.9.1",
+        "author": "Ben Burkert",
+        "date": "2008-03-05T01:33:10Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/a4a64804e50e4226caae85b9bb7952b53cc98165"
+      },
+      {
+        "sha": "e99089e",
+        "message": "fixed settings controller stuff",
+        "author": "Ben Burkert",
+        "date": "2008-02-27T05:39:09Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/e99089e40a93cc1f7612d607515c38481bafd339"
+      },
+      {
+        "sha": "7bb2cd7",
+        "message": "merging with route_specs",
+        "author": "Ben Burkert",
+        "date": "2008-02-27T05:25:27Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/7bb2cd76e8f68ef8c9f37141a84c8d56462eb2bf"
+      },
+      {
+        "sha": "e650042",
+        "message": "updated route specs and the user resource",
+        "author": "Ben Burkert",
+        "date": "2008-02-27T03:51:58Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/e65004234c79e418b553e381c053c6e24d95b421"
+      },
+      {
+        "sha": "26574cd",
+        "message": "fixed bad route in the admin layout.",
+        "author": "Ben Burkert",
+        "date": "2008-02-25T04:06:23Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/26574cd69b18c68e7a7ccdce8378771636e8c3c3"
+      },
+      {
+        "sha": "306733f",
+        "message": "all specs are passing.  Updated the spec_helper, added temporary fix to init.rb",
+        "author": "Ben Burkert",
+        "date": "2008-02-24T21:01:25Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/306733f232f6060717c6abd57e33c806ece489e5"
+      },
+      {
+        "sha": "ea680d5",
+        "message": "Updated routes to use namespaces correctly, added a temporary fix to init.rb",
+        "author": "Ben Burkert",
+        "date": "2008-02-24T20:51:19Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/ea680d5e4137f5470a633f02ca8b8913b51e3788"
+      },
+      {
+        "sha": "7fae3ea",
+        "message": "Gave mailer some love",
+        "author": "brapse",
+        "date": "2008-02-24T04:58:48Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/7fae3eaa7564a108f9ac6262bceb331ad56ab9be"
+      },
+      {
+        "sha": "9c1cfd8",
+        "message": "ignoring .DS_Store",
+        "author": "Ben Burkert",
+        "date": "2008-02-24T05:47:54Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/9c1cfd8e1099909fc0ca963f3ffcc569d53eefb8"
+      },
+      {
+        "sha": "c509db0",
+        "message": "Fixed a typo in the README",
+        "author": "Gavin-John Noonan",
+        "date": "2008-02-23T21:32:43Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/c509db02ff038073c65b798c0905416577d8d2ce"
+      },
+      {
+        "sha": "0de6415",
+        "message": "added script/install_merb, updated Rakefile and README",
+        "author": "Ben Burkert",
+        "date": "2008-02-23T20:54:33Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/0de64156f0af73aabd4e8650a7df9005e4659d2e"
+      },
+      {
+        "sha": "59c9e2d",
+        "message": "updated controllers and views for the new routes",
+        "author": "Ben Burkert",
+        "date": "2008-02-22T20:45:48Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/59c9e2de0d2dff3a4a132f32a4531ce2c779eba7"
+      },
+      {
+        "sha": "753adbb",
+        "message": "Added the route specs",
+        "author": "Ben Burkert",
+        "date": "2008-02-22T20:37:57Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/753adbb68e81eaaeeb070f2948671193295e23af"
+      },
+      {
+        "sha": "ca57648",
+        "message": "router redo",
+        "author": "Ben Burkert",
+        "date": "2008-02-22T20:33:44Z",
+        "url": "https://github.com/hornbeck/blerb-core/commit/ca57648454253f81e0f5a02a6219fcad62ffd55e"
+      }
+    ],
+    "files": [
+      {
+        "name": ".gitignore",
+        "path": ".gitignore",
+        "type": "blob",
+        "size": 92,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/.gitignore"
+      },
+      {
+        "name": "README",
+        "path": "README",
+        "type": "blob",
+        "size": 1111,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/README"
+      },
+      {
+        "name": "Rakefile",
+        "path": "Rakefile",
+        "type": "blob",
+        "size": 1309,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/Rakefile"
+      },
+      {
+        "name": "WISHLIST",
+        "path": "WISHLIST",
+        "type": "blob",
+        "size": 143,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/WISHLIST"
+      },
+      {
+        "name": "articles.rb",
+        "path": "app/controllers/admin/articles.rb",
+        "type": "blob",
+        "size": 1207,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/admin/articles.rb"
+      },
+      {
+        "name": "comments.rb",
+        "path": "app/controllers/admin/comments.rb",
+        "type": "blob",
+        "size": 1244,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/admin/comments.rb"
+      },
+      {
+        "name": "settings.rb",
+        "path": "app/controllers/admin/settings.rb",
+        "type": "blob",
+        "size": 312,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/admin/settings.rb"
+      },
+      {
+        "name": "users.rb",
+        "path": "app/controllers/admin/users.rb",
+        "type": "blob",
+        "size": 1025,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/admin/users.rb"
+      },
+      {
+        "name": "application.rb",
+        "path": "app/controllers/application.rb",
+        "type": "blob",
+        "size": 293,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/application.rb"
+      },
+      {
+        "name": "articles.rb",
+        "path": "app/controllers/articles.rb",
+        "type": "blob",
+        "size": 271,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/articles.rb"
+      },
+      {
+        "name": "comments.rb",
+        "path": "app/controllers/comments.rb",
+        "type": "blob",
+        "size": 512,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/comments.rb"
+      },
+      {
+        "name": "exceptions.rb",
+        "path": "app/controllers/exceptions.rb",
+        "type": "blob",
+        "size": 223,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/exceptions.rb"
+      },
+      {
+        "name": "session.rb",
+        "path": "app/controllers/session.rb",
+        "type": "blob",
+        "size": 660,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/session.rb"
+      },
+      {
+        "name": "users.rb",
+        "path": "app/controllers/users.rb",
+        "type": "blob",
+        "size": 592,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/controllers/users.rb"
+      },
+      {
+        "name": "articles_helper.rb",
+        "path": "app/helpers/admin/articles_helper.rb",
+        "type": "blob",
+        "size": 70,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/admin/articles_helper.rb"
+      },
+      {
+        "name": "comments_helper.rb",
+        "path": "app/helpers/admin/comments_helper.rb",
+        "type": "blob",
+        "size": 70,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/admin/comments_helper.rb"
+      },
+      {
+        "name": "users_helper.rb",
+        "path": "app/helpers/admin/users_helper.rb",
+        "type": "blob",
+        "size": 67,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/admin/users_helper.rb"
+      },
+      {
+        "name": "articles_helper.rb",
+        "path": "app/helpers/articles_helper.rb",
+        "type": "blob",
+        "size": 49,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/articles_helper.rb"
+      },
+      {
+        "name": "comments_helper.rb",
+        "path": "app/helpers/comments_helper.rb",
+        "type": "blob",
+        "size": 49,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/comments_helper.rb"
+      },
+      {
+        "name": "global_helper.rb",
+        "path": "app/helpers/global_helper.rb",
+        "type": "blob",
+        "size": 100,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/global_helper.rb"
+      },
+      {
+        "name": "users_helper.rb",
+        "path": "app/helpers/users_helper.rb",
+        "type": "blob",
+        "size": 46,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/helpers/users_helper.rb"
+      },
+      {
+        "name": "user_mailer.rb",
+        "path": "app/mailers/user_mailer.rb",
+        "type": "blob",
+        "size": 204,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/user_mailer.rb"
+      },
+      {
+        "name": "application.html.erb",
+        "path": "app/mailers/views/layout/application.html.erb",
+        "type": "blob",
+        "size": 33,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/layout/application.html.erb"
+      },
+      {
+        "name": "application.text.erb",
+        "path": "app/mailers/views/layout/application.text.erb",
+        "type": "blob",
+        "size": 33,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/layout/application.text.erb"
+      },
+      {
+        "name": "activation_notification.html.erb",
+        "path": "app/mailers/views/user_mailer/activation_notification.html.erb",
+        "type": "blob",
+        "size": 52,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/user_mailer/activation_notification.html.erb"
+      },
+      {
+        "name": "activation_notification.text.erb",
+        "path": "app/mailers/views/user_mailer/activation_notification.text.erb",
+        "type": "blob",
+        "size": 52,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/user_mailer/activation_notification.text.erb"
+      },
+      {
+        "name": "signup_notification.html.erb",
+        "path": "app/mailers/views/user_mailer/signup_notification.html.erb",
+        "type": "blob",
+        "size": 213,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/user_mailer/signup_notification.html.erb"
+      },
+      {
+        "name": "signup_notification.text.erb",
+        "path": "app/mailers/views/user_mailer/signup_notification.text.erb",
+        "type": "blob",
+        "size": 213,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/mailers/views/user_mailer/signup_notification.text.erb"
+      },
+      {
+        "name": "article.rb",
+        "path": "app/models/article.rb",
+        "type": "blob",
+        "size": 406,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/models/article.rb"
+      },
+      {
+        "name": "comment.rb",
+        "path": "app/models/comment.rb",
+        "type": "blob",
+        "size": 1559,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/models/comment.rb"
+      },
+      {
+        "name": "setting.rb",
+        "path": "app/models/setting.rb",
+        "type": "blob",
+        "size": 1088,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/models/setting.rb"
+      },
+      {
+        "name": "tag.rb",
+        "path": "app/models/tag.rb",
+        "type": "blob",
+        "size": 125,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/models/tag.rb"
+      },
+      {
+        "name": "user.rb",
+        "path": "app/models/user.rb",
+        "type": "blob",
+        "size": 2437,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/models/user.rb"
+      },
+      {
+        "name": "application.html.erb",
+        "path": "app/parts/views/layout/application.html.erb",
+        "type": "blob",
+        "size": 33,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/parts/views/layout/application.html.erb"
+      },
+      {
+        "name": "destroy.js.erb",
+        "path": "app/views/admin/articles/destroy.js.erb",
+        "type": "blob",
+        "size": 83,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/articles/destroy.js.erb"
+      },
+      {
+        "name": "edit.html.erb",
+        "path": "app/views/admin/articles/edit.html.erb",
+        "type": "blob",
+        "size": 920,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/articles/edit.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/admin/articles/index.html.erb",
+        "type": "blob",
+        "size": 929,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/articles/index.html.erb"
+      },
+      {
+        "name": "new.html.erb",
+        "path": "app/views/admin/articles/new.html.erb",
+        "type": "blob",
+        "size": 892,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/articles/new.html.erb"
+      },
+      {
+        "name": "show.html.erb",
+        "path": "app/views/admin/articles/show.html.erb",
+        "type": "blob",
+        "size": 443,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/articles/show.html.erb"
+      },
+      {
+        "name": "_comment.html.erb",
+        "path": "app/views/admin/comments/_comment.html.erb",
+        "type": "blob",
+        "size": 759,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/comments/_comment.html.erb"
+      },
+      {
+        "name": "_spam.html.erb",
+        "path": "app/views/admin/comments/_spam.html.erb",
+        "type": "blob",
+        "size": 383,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/comments/_spam.html.erb"
+      },
+      {
+        "name": "edit.html.erb",
+        "path": "app/views/admin/comments/edit.html.erb",
+        "type": "blob",
+        "size": 525,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/comments/edit.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/admin/comments/index.html.erb",
+        "type": "blob",
+        "size": 448,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/comments/index.html.erb"
+      },
+      {
+        "name": "show.html.erb",
+        "path": "app/views/admin/comments/show.html.erb",
+        "type": "blob",
+        "size": 483,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/comments/show.html.erb"
+      },
+      {
+        "name": "edit.html.erb",
+        "path": "app/views/admin/settings/edit.html.erb",
+        "type": "blob",
+        "size": 389,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/settings/edit.html.erb"
+      },
+      {
+        "name": "edit.html.erb",
+        "path": "app/views/admin/users/edit.html.erb",
+        "type": "blob",
+        "size": 19,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/users/edit.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/admin/users/index.html.erb",
+        "type": "blob",
+        "size": 20,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/users/index.html.erb"
+      },
+      {
+        "name": "new.html.erb",
+        "path": "app/views/admin/users/new.html.erb",
+        "type": "blob",
+        "size": 18,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/users/new.html.erb"
+      },
+      {
+        "name": "show.html.erb",
+        "path": "app/views/admin/users/show.html.erb",
+        "type": "blob",
+        "size": 19,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/admin/users/show.html.erb"
+      },
+      {
+        "name": "_article.html.erb",
+        "path": "app/views/articles/_article.html.erb",
+        "type": "blob",
+        "size": 338,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/articles/_article.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/articles/index.html.erb",
+        "type": "blob",
+        "size": 202,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/articles/index.html.erb"
+      },
+      {
+        "name": "index.xml.builder",
+        "path": "app/views/articles/index.xml.builder",
+        "type": "blob",
+        "size": 531,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/articles/index.xml.builder"
+      },
+      {
+        "name": "show.html.erb",
+        "path": "app/views/articles/show.html.erb",
+        "type": "blob",
+        "size": 203,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/articles/show.html.erb"
+      },
+      {
+        "name": "_comment.html.erb",
+        "path": "app/views/comments/_comment.html.erb",
+        "type": "blob",
+        "size": 224,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/comments/_comment.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/comments/index.html.erb",
+        "type": "blob",
+        "size": 111,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/comments/index.html.erb"
+      },
+      {
+        "name": "internal_server_error.html.erb",
+        "path": "app/views/exceptions/internal_server_error.html.erb",
+        "type": "blob",
+        "size": 7736,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/exceptions/internal_server_error.html.erb"
+      },
+      {
+        "name": "not_acceptable.html.erb",
+        "path": "app/views/exceptions/not_acceptable.html.erb",
+        "type": "blob",
+        "size": 1281,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/exceptions/not_acceptable.html.erb"
+      },
+      {
+        "name": "not_found.html.erb",
+        "path": "app/views/exceptions/not_found.html.erb",
+        "type": "blob",
+        "size": 1445,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/exceptions/not_found.html.erb"
+      },
+      {
+        "name": "admin.html.erb",
+        "path": "app/views/layout/admin.html.erb",
+        "type": "blob",
+        "size": 1099,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/layout/admin.html.erb"
+      },
+      {
+        "name": "application.html.erb",
+        "path": "app/views/layout/application.html.erb",
+        "type": "blob",
+        "size": 1151,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/layout/application.html.erb"
+      },
+      {
+        "name": "new.html.erb",
+        "path": "app/views/session/new.html.erb",
+        "type": "blob",
+        "size": 559,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/session/new.html.erb"
+      },
+      {
+        "name": "index.html.erb",
+        "path": "app/views/users/index.html.erb",
+        "type": "blob",
+        "size": 105,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/users/index.html.erb"
+      },
+      {
+        "name": "new.html.erb",
+        "path": "app/views/users/new.html.erb",
+        "type": "blob",
+        "size": 746,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/app/views/users/new.html.erb"
+      },
+      {
+        "name": ".DS_Store",
+        "path": "config/.DS_Store",
+        "type": "blob",
+        "size": 6148,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/.DS_Store"
+      },
+      {
+        "name": ".gitignore",
+        "path": "config/.gitignore",
+        "type": "blob",
+        "size": 13,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/.gitignore"
+      },
+      {
+        "name": "blerb.sql",
+        "path": "config/blerb.sql",
+        "type": "blob",
+        "size": 4761,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/blerb.sql"
+      },
+      {
+        "name": "database.sample.yml",
+        "path": "config/database.sample.yml",
+        "type": "blob",
+        "size": 310,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/database.sample.yml"
+      },
+      {
+        "name": "development.rb",
+        "path": "config/environments/development.rb",
+        "type": "blob",
+        "size": 152,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/environments/development.rb"
+      },
+      {
+        "name": "production.rb",
+        "path": "config/environments/production.rb",
+        "type": "blob",
+        "size": 125,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/environments/production.rb"
+      },
+      {
+        "name": "test.rb",
+        "path": "config/environments/test.rb",
+        "type": "blob",
+        "size": 142,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/environments/test.rb"
+      },
+      {
+        "name": "init.rb",
+        "path": "config/init.rb",
+        "type": "blob",
+        "size": 1817,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/init.rb"
+      },
+      {
+        "name": "merb.yml",
+        "path": "config/merb.yml",
+        "type": "blob",
+        "size": 3084,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/merb.yml"
+      },
+      {
+        "name": "merb_init.rb",
+        "path": "config/merb_init.rb",
+        "type": "blob",
+        "size": 665,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/merb_init.rb"
+      },
+      {
+        "name": "router.rb",
+        "path": "config/router.rb",
+        "type": "blob",
+        "size": 3755,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/router.rb"
+      },
+      {
+        "name": "settings.default.yml",
+        "path": "config/settings.default.yml",
+        "type": "blob",
+        "size": 87,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/settings.default.yml"
+      },
+      {
+        "name": "upload.conf",
+        "path": "config/upload.conf",
+        "type": "blob",
+        "size": 0,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/config/upload.conf"
+      },
+      {
+        "name": "akismetor.rb",
+        "path": "lib/akismetor.rb",
+        "type": "blob",
+        "size": 1256,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/akismetor.rb"
+      },
+      {
+        "name": "authenticated_system.rb",
+        "path": "lib/authenticated_system.rb",
+        "type": "blob",
+        "size": 1107,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/authenticated_system.rb"
+      },
+      {
+        "name": "authenticated_system_controller.rb",
+        "path": "lib/authenticated_system_controller.rb",
+        "type": "blob",
+        "size": 2961,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/authenticated_system_controller.rb"
+      },
+      {
+        "name": "authenticated_system_model.rb",
+        "path": "lib/authenticated_system_model.rb",
+        "type": "blob",
+        "size": 2681,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/authenticated_system_model.rb"
+      },
+      {
+        "name": "authenticated_system_orm_map.rb",
+        "path": "lib/authenticated_system_orm_map.rb",
+        "type": "blob",
+        "size": 815,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/authenticated_system_orm_map.rb"
+      },
+      {
+        "name": "permalinker.rb",
+        "path": "lib/permalinker.rb",
+        "type": "blob",
+        "size": 1203,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/permalinker.rb"
+      },
+      {
+        "name": "tagging.rb",
+        "path": "lib/tagging.rb",
+        "type": "blob",
+        "size": 827,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/lib/tagging.rb"
+      },
+      {
+        "name": ".gitignore",
+        "path": "log/.gitignore",
+        "type": "blob",
+        "size": 0,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/log/.gitignore"
+      },
+      {
+        "name": ".DS_Store",
+        "path": "public/.DS_Store",
+        "type": "blob",
+        "size": 6148,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/.DS_Store"
+      },
+      {
+        "name": ".DS_Store",
+        "path": "public/images/.DS_Store",
+        "type": "blob",
+        "size": 6148,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/.DS_Store"
+      },
+      {
+        "name": ".DS_Store",
+        "path": "public/images/icons/.DS_Store",
+        "type": "blob",
+        "size": 245764,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/.DS_Store"
+      },
+      {
+        "name": "accept.png",
+        "path": "public/images/icons/accept.png",
+        "type": "blob",
+        "size": 781,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/accept.png"
+      },
+      {
+        "name": "add.png",
+        "path": "public/images/icons/add.png",
+        "type": "blob",
+        "size": 733,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/add.png"
+      },
+      {
+        "name": "anchor.png",
+        "path": "public/images/icons/anchor.png",
+        "type": "blob",
+        "size": 523,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/anchor.png"
+      },
+      {
+        "name": "application.png",
+        "path": "public/images/icons/application.png",
+        "type": "blob",
+        "size": 464,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application.png"
+      },
+      {
+        "name": "application_add.png",
+        "path": "public/images/icons/application_add.png",
+        "type": "blob",
+        "size": 619,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_add.png"
+      },
+      {
+        "name": "application_cascade.png",
+        "path": "public/images/icons/application_cascade.png",
+        "type": "blob",
+        "size": 524,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_cascade.png"
+      },
+      {
+        "name": "application_delete.png",
+        "path": "public/images/icons/application_delete.png",
+        "type": "blob",
+        "size": 610,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_delete.png"
+      },
+      {
+        "name": "application_double.png",
+        "path": "public/images/icons/application_double.png",
+        "type": "blob",
+        "size": 533,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_double.png"
+      },
+      {
+        "name": "application_edit.png",
+        "path": "public/images/icons/application_edit.png",
+        "type": "blob",
+        "size": 703,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_edit.png"
+      },
+      {
+        "name": "application_error.png",
+        "path": "public/images/icons/application_error.png",
+        "type": "blob",
+        "size": 656,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_error.png"
+      },
+      {
+        "name": "application_form.png",
+        "path": "public/images/icons/application_form.png",
+        "type": "blob",
+        "size": 467,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_form.png"
+      },
+      {
+        "name": "application_form_add.png",
+        "path": "public/images/icons/application_form_add.png",
+        "type": "blob",
+        "size": 592,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_form_add.png"
+      },
+      {
+        "name": "application_form_delete.png",
+        "path": "public/images/icons/application_form_delete.png",
+        "type": "blob",
+        "size": 605,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_form_delete.png"
+      },
+      {
+        "name": "application_form_edit.png",
+        "path": "public/images/icons/application_form_edit.png",
+        "type": "blob",
+        "size": 714,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_form_edit.png"
+      },
+      {
+        "name": "application_form_magnify.png",
+        "path": "public/images/icons/application_form_magnify.png",
+        "type": "blob",
+        "size": 612,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_form_magnify.png"
+      },
+      {
+        "name": "application_get.png",
+        "path": "public/images/icons/application_get.png",
+        "type": "blob",
+        "size": 581,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_get.png"
+      },
+      {
+        "name": "application_go.png",
+        "path": "public/images/icons/application_go.png",
+        "type": "blob",
+        "size": 634,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_go.png"
+      },
+      {
+        "name": "application_home.png",
+        "path": "public/images/icons/application_home.png",
+        "type": "blob",
+        "size": 685,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_home.png"
+      },
+      {
+        "name": "application_key.png",
+        "path": "public/images/icons/application_key.png",
+        "type": "blob",
+        "size": 670,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_key.png"
+      },
+      {
+        "name": "application_lightning.png",
+        "path": "public/images/icons/application_lightning.png",
+        "type": "blob",
+        "size": 656,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_lightning.png"
+      },
+      {
+        "name": "application_link.png",
+        "path": "public/images/icons/application_link.png",
+        "type": "blob",
+        "size": 701,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_link.png"
+      },
+      {
+        "name": "application_osx.png",
+        "path": "public/images/icons/application_osx.png",
+        "type": "blob",
+        "size": 487,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_osx.png"
+      },
+      {
+        "name": "application_osx_terminal.png",
+        "path": "public/images/icons/application_osx_terminal.png",
+        "type": "blob",
+        "size": 525,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_osx_terminal.png"
+      },
+      {
+        "name": "application_put.png",
+        "path": "public/images/icons/application_put.png",
+        "type": "blob",
+        "size": 585,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_put.png"
+      },
+      {
+        "name": "application_side_boxes.png",
+        "path": "public/images/icons/application_side_boxes.png",
+        "type": "blob",
+        "size": 478,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_side_boxes.png"
+      },
+      {
+        "name": "application_side_contract.png",
+        "path": "public/images/icons/application_side_contract.png",
+        "type": "blob",
+        "size": 547,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_side_contract.png"
+      },
+      {
+        "name": "application_side_expand.png",
+        "path": "public/images/icons/application_side_expand.png",
+        "type": "blob",
+        "size": 581,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_side_expand.png"
+      },
+      {
+        "name": "application_side_list.png",
+        "path": "public/images/icons/application_side_list.png",
+        "type": "blob",
+        "size": 510,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_side_list.png"
+      },
+      {
+        "name": "application_side_tree.png",
+        "path": "public/images/icons/application_side_tree.png",
+        "type": "blob",
+        "size": 483,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_side_tree.png"
+      },
+      {
+        "name": "application_split.png",
+        "path": "public/images/icons/application_split.png",
+        "type": "blob",
+        "size": 520,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_split.png"
+      },
+      {
+        "name": "application_tile_horizontal.png",
+        "path": "public/images/icons/application_tile_horizontal.png",
+        "type": "blob",
+        "size": 432,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_tile_horizontal.png"
+      },
+      {
+        "name": "application_tile_vertical.png",
+        "path": "public/images/icons/application_tile_vertical.png",
+        "type": "blob",
+        "size": 492,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_tile_vertical.png"
+      },
+      {
+        "name": "application_view_columns.png",
+        "path": "public/images/icons/application_view_columns.png",
+        "type": "blob",
+        "size": 493,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_columns.png"
+      },
+      {
+        "name": "application_view_detail.png",
+        "path": "public/images/icons/application_view_detail.png",
+        "type": "blob",
+        "size": 576,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_detail.png"
+      },
+      {
+        "name": "application_view_gallery.png",
+        "path": "public/images/icons/application_view_gallery.png",
+        "type": "blob",
+        "size": 555,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_gallery.png"
+      },
+      {
+        "name": "application_view_icons.png",
+        "path": "public/images/icons/application_view_icons.png",
+        "type": "blob",
+        "size": 476,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_icons.png"
+      },
+      {
+        "name": "application_view_list.png",
+        "path": "public/images/icons/application_view_list.png",
+        "type": "blob",
+        "size": 473,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_list.png"
+      },
+      {
+        "name": "application_view_tile.png",
+        "path": "public/images/icons/application_view_tile.png",
+        "type": "blob",
+        "size": 465,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_view_tile.png"
+      },
+      {
+        "name": "application_xp.png",
+        "path": "public/images/icons/application_xp.png",
+        "type": "blob",
+        "size": 426,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_xp.png"
+      },
+      {
+        "name": "application_xp_terminal.png",
+        "path": "public/images/icons/application_xp_terminal.png",
+        "type": "blob",
+        "size": 507,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/application_xp_terminal.png"
+      },
+      {
+        "name": "arrow_branch.png",
+        "path": "public/images/icons/arrow_branch.png",
+        "type": "blob",
+        "size": 582,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_branch.png"
+      },
+      {
+        "name": "arrow_divide.png",
+        "path": "public/images/icons/arrow_divide.png",
+        "type": "blob",
+        "size": 677,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_divide.png"
+      },
+      {
+        "name": "arrow_down.png",
+        "path": "public/images/icons/arrow_down.png",
+        "type": "blob",
+        "size": 379,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_down.png"
+      },
+      {
+        "name": "arrow_in.png",
+        "path": "public/images/icons/arrow_in.png",
+        "type": "blob",
+        "size": 600,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_in.png"
+      },
+      {
+        "name": "arrow_inout.png",
+        "path": "public/images/icons/arrow_inout.png",
+        "type": "blob",
+        "size": 551,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_inout.png"
+      },
+      {
+        "name": "arrow_join.png",
+        "path": "public/images/icons/arrow_join.png",
+        "type": "blob",
+        "size": 626,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_join.png"
+      },
+      {
+        "name": "arrow_left.png",
+        "path": "public/images/icons/arrow_left.png",
+        "type": "blob",
+        "size": 345,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_left.png"
+      },
+      {
+        "name": "arrow_merge.png",
+        "path": "public/images/icons/arrow_merge.png",
+        "type": "blob",
+        "size": 484,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_merge.png"
+      },
+      {
+        "name": "arrow_out.png",
+        "path": "public/images/icons/arrow_out.png",
+        "type": "blob",
+        "size": 594,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_out.png"
+      },
+      {
+        "name": "arrow_redo.png",
+        "path": "public/images/icons/arrow_redo.png",
+        "type": "blob",
+        "size": 625,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_redo.png"
+      },
+      {
+        "name": "arrow_refresh.png",
+        "path": "public/images/icons/arrow_refresh.png",
+        "type": "blob",
+        "size": 685,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_refresh.png"
+      },
+      {
+        "name": "arrow_refresh_small.png",
+        "path": "public/images/icons/arrow_refresh_small.png",
+        "type": "blob",
+        "size": 506,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_refresh_small.png"
+      },
+      {
+        "name": "arrow_right.png",
+        "path": "public/images/icons/arrow_right.png",
+        "type": "blob",
+        "size": 349,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_right.png"
+      },
+      {
+        "name": "arrow_rotate_anticlockwise.png",
+        "path": "public/images/icons/arrow_rotate_anticlockwise.png",
+        "type": "blob",
+        "size": 608,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_rotate_anticlockwise.png"
+      },
+      {
+        "name": "arrow_rotate_clockwise.png",
+        "path": "public/images/icons/arrow_rotate_clockwise.png",
+        "type": "blob",
+        "size": 602,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_rotate_clockwise.png"
+      },
+      {
+        "name": "arrow_switch.png",
+        "path": "public/images/icons/arrow_switch.png",
+        "type": "blob",
+        "size": 683,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_switch.png"
+      },
+      {
+        "name": "arrow_turn_left.png",
+        "path": "public/images/icons/arrow_turn_left.png",
+        "type": "blob",
+        "size": 516,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_turn_left.png"
+      },
+      {
+        "name": "arrow_turn_right.png",
+        "path": "public/images/icons/arrow_turn_right.png",
+        "type": "blob",
+        "size": 489,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_turn_right.png"
+      },
+      {
+        "name": "arrow_undo.png",
+        "path": "public/images/icons/arrow_undo.png",
+        "type": "blob",
+        "size": 631,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_undo.png"
+      },
+      {
+        "name": "arrow_up.png",
+        "path": "public/images/icons/arrow_up.png",
+        "type": "blob",
+        "size": 372,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/arrow_up.png"
+      },
+      {
+        "name": "asterisk_orange.png",
+        "path": "public/images/icons/asterisk_orange.png",
+        "type": "blob",
+        "size": 760,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/asterisk_orange.png"
+      },
+      {
+        "name": "asterisk_yellow.png",
+        "path": "public/images/icons/asterisk_yellow.png",
+        "type": "blob",
+        "size": 743,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/asterisk_yellow.png"
+      },
+      {
+        "name": "attach.png",
+        "path": "public/images/icons/attach.png",
+        "type": "blob",
+        "size": 391,
+        "url": "https://github.com/hornbeck/blerb-core/blob/master/public/images/icons/attach.png"
+      }
+    ],
+    "readme": "= Welcome to Blerb!\n\n== Installation\n  * from your working directory, say ~/code/, clone the blerb repository:\n  * git clone git://github.com/hornbeck/blerb-core.git - anon checkout\n  * git clone git@github.com:hornbeck/blerb-core.git   - commit access\n  * cd blerb-core\n  * use script/install to update or install merb-* in the parent directory (e.g. ~/code/merb-core/):\n  * script/install_merb\n  * cp config/database.sample.yml config/database.yml\n  * fill in the correct database credentials\n  * cp config/settings.sample.yml config/settings.yml\n  * fill in the correct blog settings\n  * rake dm:auto_migrate\n  * to start a webserver, run the merb command:\n  * merb\n\nBlerb should now be running on port 4000, so open up your browser and visit localhost:4000!\n\n== Dependencies (versions tested)\n\n\nmerb-core         (0.9)\nmerb-more         (0.9.0)\nmerb-action-args  (0.9.0)\nmerb-assets       (0.9.0)\nmerb-mailer       (0.9.1)\nmerb-test         (0.9.0)\nmerb_datamapper   (0.9.0)\nmerb_helpers      (0.9.0)\nmerb_rspec        (0.9.0)\ndatamapper        (0.3.0)\nrspec             (1.1.3)\ndo_yourdbhere     (varies)\n\n",
+    "languages": {
+      "Ruby": 102917,
+      "JavaScript": 102391,
+      "PHP": 1052
+    }
+  },
+  "wayneeseguin/alogr": {
+    "metadata": {
+      "name": "alogr",
+      "fullName": "wayneeseguin/alogr",
+      "description": "AlogR is a threadsafe non-blocking asynchronous configurable logger for Ruby.",
+      "language": "Ruby",
+      "stars": 16,
+      "forks": 11,
+      "createdAt": "2008-02-01T16:36:54Z",
+      "updatedAt": "2026-06-30T12:07:32Z",
+      "pushedAt": "2008-03-26T19:10:50Z",
+      "archived": true,
+      "topics": [],
+      "defaultBranch": "master",
+      "owner": "wayneeseguin",
+      "htmlUrl": "https://github.com/wayneeseguin/alogr"
+    },
+    "commits": [
+      {
+        "sha": "321cdc8",
+        "message": "Updated with current state.",
+        "author": "Wayne E. Seguin",
+        "date": "2008-02-01T16:35:54Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/321cdc81d4c6dc9e2be6b3d3a8af5b1a4f639d48"
+      },
+      {
+        "sha": "f254edb",
+        "message": "Began reworking API. Worked on specs.",
+        "author": "Wayne E. Seguin",
+        "date": "2007-11-12T02:23:55Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/f254edb0ce9b3c7680ac8e5ebef73a1abdefcd49"
+      },
+      {
+        "sha": "03600d9",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-20T13:42:31Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/03600d9c8d8048d75161485e1fe538adf4853499"
+      },
+      {
+        "sha": "d89bbc0",
+        "message": "spec: crashing as per issue #14092; cleanup",
+        "author": "flazz",
+        "date": "2007-09-20T04:30:54Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/d89bbc081b989f955596c8cfe40cb912790587e7"
+      },
+      {
+        "sha": "fdaf64a",
+        "message": "spec: passes or fails, no chrashing; higher resolution; some cleanup",
+        "author": "flazz",
+        "date": "2007-09-20T02:19:11Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/fdaf64a68c347057ab2272f1afe76818b3feabd2"
+      },
+      {
+        "sha": "1f58853",
+        "message": "test commit",
+        "author": "flazz",
+        "date": "2007-09-20T01:05:59Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/1f58853758f556eb59d71c9bfa8f50f37a2c16ab"
+      },
+      {
+        "sha": "15179ae",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-19T18:35:03Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/15179ae8e0dc5090efec715a5ad7f708fcdd2cfe"
+      },
+      {
+        "sha": "216f972",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-19T15:20:16Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/216f972eaa6ce468aa0423af3510b188e51d4e57"
+      },
+      {
+        "sha": "1a48c91",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-19T03:07:34Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/1a48c91397d625c6c069bf9a1d9121af15417946"
+      },
+      {
+        "sha": "a83be59",
+        "message": "Debugging bus error",
+        "author": "wayneeseguin",
+        "date": "2007-09-18T14:54:32Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/a83be59700e0047c390abb06646f985f44bd6ef4"
+      },
+      {
+        "sha": "2f1b418",
+        "message": "Generated a very simple website using webgen.",
+        "author": "wayneeseguin",
+        "date": "2007-09-18T01:38:09Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/2f1b418980c06d35667f275d3b1e113439d637e0"
+      },
+      {
+        "sha": "8c7fc84",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-17T21:23:25Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/8c7fc842faa0e323dbd62c7e7f7eed5684033ebb"
+      },
+      {
+        "sha": "d4b06f4",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-17T18:41:31Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/d4b06f40b02e93003d967b60bdaea9a6114ca4d6"
+      },
+      {
+        "sha": "22dc5a4",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-17T14:55:59Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/22dc5a45f2feb2a8b2a56960e602a26d4d478f64"
+      },
+      {
+        "sha": "dfb4133",
+        "message": "",
+        "author": "wayneeseguin",
+        "date": "2007-09-17T02:15:05Z",
+        "url": "https://github.com/wayneeseguin/alogr/commit/dfb4133fab1d614ce4801888bdf18a32b920c088"
+      }
+    ],
+    "files": [
+      {
+        "name": "CHANGELOG",
+        "path": "CHANGELOG",
+        "type": "blob",
+        "size": 58,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/CHANGELOG"
+      },
+      {
+        "name": "COPYING",
+        "path": "COPYING",
+        "type": "blob",
+        "size": 2353,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/COPYING"
+      },
+      {
+        "name": "README",
+        "path": "README",
+        "type": "blob",
+        "size": 3221,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/README"
+      },
+      {
+        "name": "Rakefile",
+        "path": "Rakefile",
+        "type": "blob",
+        "size": 5498,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/Rakefile"
+      },
+      {
+        "name": "TODO",
+        "path": "TODO",
+        "type": "blob",
+        "size": 221,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/TODO"
+      },
+      {
+        "name": "aio_logger.c",
+        "path": "ext/aio_logger/aio_logger.c",
+        "type": "blob",
+        "size": 3675,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/ext/aio_logger/aio_logger.c"
+      },
+      {
+        "name": "extconf.rb",
+        "path": "ext/aio_logger/extconf.rb",
+        "type": "blob",
+        "size": 248,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/ext/aio_logger/extconf.rb"
+      },
+      {
+        "name": "alogr.rb",
+        "path": "lib/alogr.rb",
+        "type": "blob",
+        "size": 6381,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/lib/alogr.rb"
+      },
+      {
+        "name": "base_spec.rb",
+        "path": "specs/base_spec.rb",
+        "type": "blob",
+        "size": 1007,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/base_spec.rb"
+      },
+      {
+        "name": "complex_spec.rb",
+        "path": "specs/complex_spec.rb",
+        "type": "blob",
+        "size": 969,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/complex_spec.rb"
+      },
+      {
+        "name": "configuration_spec.rb",
+        "path": "specs/configuration_spec.rb",
+        "type": "blob",
+        "size": 232,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/configuration_spec.rb"
+      },
+      {
+        "name": "io_spec.rb",
+        "path": "specs/io_spec.rb",
+        "type": "blob",
+        "size": 172,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/io_spec.rb"
+      },
+      {
+        "name": "regexen_spec.rb",
+        "path": "specs/regexen_spec.rb",
+        "type": "blob",
+        "size": 213,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/regexen_spec.rb"
+      },
+      {
+        "name": "spec_helper.rb",
+        "path": "specs/spec_helper.rb",
+        "type": "blob",
+        "size": 36,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/specs/spec_helper.rb"
+      },
+      {
+        "name": "atom.rb",
+        "path": "website/atom.rb",
+        "type": "blob",
+        "size": 1607,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/website/atom.rb"
+      },
+      {
+        "name": "default.css",
+        "path": "website/src/default.css",
+        "type": "blob",
+        "size": 3432,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/website/src/default.css"
+      },
+      {
+        "name": "default.template",
+        "path": "website/src/default.template",
+        "type": "blob",
+        "size": 2679,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/website/src/default.template"
+      },
+      {
+        "name": "background.gif",
+        "path": "website/src/images/background.gif",
+        "type": "blob",
+        "size": 677,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/website/src/images/background.gif"
+      },
+      {
+        "name": "index.page",
+        "path": "website/src/index.page",
+        "type": "blob",
+        "size": 122,
+        "url": "https://github.com/wayneeseguin/alogr/blob/master/website/src/index.page"
+      }
+    ],
+    "readme": "= About\n\n  AlogR enables a Ruby project to log to the filesystem using non-blocking asynchronous IO with no external dependencies.\n\n= Author\n\n  Wayne E. Seguin (wayneeseguin at gmail dot com)\n\n= How it works\n\n  A global logging buffer gets added to the running application.\n  There is a global buffer which is an array of fifo queues.\n  Worker threads are to pop the first element (which is a string) off of a fifo queue and \"process\" it. \n  Processing involves writing the string to disk using non-blocking asynchronous IO\n  Threads will be event based where the event is something being placed in the queue, or the queue non-empty.\n  \n= Config\n  \n  You can choose the log that the application uses:\n\n  AlogR.new( \"log/app_log.log\" )\n  \n  :log specifies the default log\n  \n  AlogR.new( :log => \"log/app_log.log\" )\n\n  You may also specify any combination of logs corresponding to the log levels in addition to the default log:\n\n  AlogR.new( :log => \"log/app_log.log\", :error => \"log/error.log\", :debug => \"log/debug.log\")\n\n  where log levels are one of: [ emergency, alert, critical, error, warning, notice, info, debug ] \n\n= Application Usage\n\n  First be sure to setup the logger:\n\n  $alogger = AlogR.new(:log)\n\n  To log a string to either the error log or the default log (depending on your configuration):\n\n  \"Jonnie! You borked it!\".log(:error)\n\nFeature Requests:\n# Be able to specify conditional filters\n\n= Examples\n\n* Example 1\nrequire \"alogr\"\n$logger = AlogR::Logger.new(:log => \"/Users/wayne/projects/ruby/alogr/trunk/log/default.log\")\n\"a test, should go to the logs 10 times\\n\".log.log.log.log.log.log.log.log.log.log\n\n* Example 2\nrequire \"alogr\"\n$logger = AlogR.new(\n:log => \"/Users/wayne/projects/ruby/alogr/trunk/log/production.log\", \n:error => \"/Users/wayne/projects/ruby/alogr/trunk/log/error.log\"\n)\n\n\"(1)this should go to the production log\\n\".log\n\n\"(2)this should go to error log\\n\".log(:error)\n\n\"(3)error\\n\".log :error\n\n\"(4)production\\n\".log :info\n\n\"(5)error\".log :error\n\n\n* Example 3\nrequire \"lib/alogr\"\n$logger = AlogR.new(\n:log => \"/Users/wayne/projects/ruby/alogr/trunk/log/production.log\", \n:error => \"/Users/wayne/projects/ruby/alogr/trunk/log/error.log\",\n:info => \"/Users/wayne/projects/ruby/alogr/trunk/log/info.log\",\n:warning => \"/Users/wayne/projects/ruby/alogr/trunk/log/warning.log\"\n)\n\n\"this should go to info log\".log\n\n\"this should go to error log\".log(:error)\n\n\"this should go to production log\".log(:warning)\n\n\"error\".log :error\n\n\"warning\".log :warning\n\n\"info\".log :info\n\n\"yetanother error\".log :error\n\n* Example 4\nrequire \"lib/alogr\"\n$logger = AlogR.new(\n:log => \"/Users/wayne/projects/ruby/alogr/trunk/log/production.log\", \n:error => \"/Users/wayne/projects/ruby/alogr/trunk/log/error.log\",\n:info => \"/Users/wayne/projects/ruby/alogr/trunk/log/info.log\",\n/paypal => \"/Users/wayne/projects/ruby/alogr/trunk/log/paypal.log\"\n)\n\"this should go to info log\".log\n\"this should go to error log\".log(:error)\n\"this should go to production log\".log(:warning)\n\n* Example 4:\nIf li",
+    "languages": {
+      "Ruby": 10865,
+      "C": 3675
+    }
+  },
+  "up_the_irons/credit_card_tools": {
+    "metadata": {
+      "name": "credit_card_tools",
+      "fullName": "up_the_irons/credit_card_tools",
+      "description": "Tools for processing credit cards on the command line",
+      "language": "Ruby",
+      "stars": 17,
+      "forks": 21,
+      "createdAt": "2008-02-03T12:37:18Z",
+      "updatedAt": "2026-06-30T12:07:33Z",
+      "pushedAt": "2008-03-26T19:11:23Z",
+      "archived": false,
+      "topics": [],
+      "defaultBranch": "master",
+      "owner": "up_the_irons",
+      "htmlUrl": "https://github.com/up_the_irons/credit_card_tools"
+    },
+    "commits": [
+      {
+        "sha": "351b58d",
+        "message": "Better way to convert dollars to cents",
+        "author": "Garry Dolley",
+        "date": "2008-02-10T10:37:04Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/351b58dd26c003614fa2e578f2b0e65164cba4cf"
+      },
+      {
+        "sha": "5b8c424",
+        "message": "Handle rounding error",
+        "author": "Garry Dolley",
+        "date": "2008-02-10T10:23:05Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/5b8c424c75d7f9d79b1e348a89cf067d686504c1"
+      },
+      {
+        "sha": "c760cf8",
+        "message": "Oops, got these reversed",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T22:55:47Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/c760cf8283aa79671d89765b087986888fcc503f"
+      },
+      {
+        "sha": "e8275b7",
+        "message": "Month needs .to_i so we can have a leading zero",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T22:47:08Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/e8275b76098014b0cdd71194037d1e77d00b2021"
+      },
+      {
+        "sha": "4495359",
+        "message": "Merge branch 'master' into test_mode_support",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T22:26:16Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/4495359c1cbf8ecee1376feeb02ac065d425905e"
+      },
+      {
+        "sha": "45c92c1",
+        "message": "Load everything only after we know something is to be done (not just usage)",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T22:26:04Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/45c92c1be0ec7b255717b8fa60e45d920d1a0dce"
+      },
+      {
+        "sha": "c6f363f",
+        "message": "Updated README to explain new gateway.yml.example",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T11:44:17Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/c6f363f2e17b4af77ac1a35751a3b3d229694841"
+      },
+      {
+        "sha": "fef9955",
+        "message": "Added CVV2 and billing address support",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T11:44:01Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/fef9955865a954adb8af4af778063e4bc71c50c6"
+      },
+      {
+        "sha": "4e6ca0c",
+        "message": "Support for live and test environments in gateway.rb",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T11:43:38Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/4e6ca0c354130942f15fa0c7c9e3ae5e37d127f7"
+      },
+      {
+        "sha": "dbee32f",
+        "message": "Added separate 'test' and 'live' blocks to example gateway.yml",
+        "author": "Garry Dolley",
+        "date": "2008-02-09T11:42:58Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/dbee32f83d3715ee029d81e1e47d4821b90fcff6"
+      },
+      {
+        "sha": "156a255",
+        "message": "Updated README",
+        "author": "Garry Dolley",
+        "date": "2008-02-03T12:34:24Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/156a255242f151af97b3cf4ae14439e157579d11"
+      },
+      {
+        "sha": "cf78686",
+        "message": "Not all .rb's need to be executable",
+        "author": "Garry Dolley",
+        "date": "2008-02-02T22:23:35Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/cf786864216eea253d10e24d8c1842f9730fd04c"
+      },
+      {
+        "sha": "e63d13d",
+        "message": "Typo",
+        "author": "Garry Dolley",
+        "date": "2008-02-02T22:21:17Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/e63d13d5a8985ecb5be00686d87fc0b7a0d561a7"
+      },
+      {
+        "sha": "a50e6ae",
+        "message": "Made it so you can execute the scripts from outside the CWD",
+        "author": "Garry Dolley",
+        "date": "2008-02-02T22:21:11Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/a50e6aee7beb2acee2974aca276a77144dfd60d9"
+      },
+      {
+        "sha": "79ce955",
+        "message": "Updated README",
+        "author": "Garry Dolley",
+        "date": "2008-02-02T22:11:27Z",
+        "url": "https://github.com/up_the_irons/credit_card_tools/commit/79ce9554a3bd692c52d612729f0c97d551aea5bb"
+      }
+    ],
+    "files": [
+      {
+        "name": "COPYING",
+        "path": "COPYING",
+        "type": "blob",
+        "size": 18013,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/COPYING"
+      },
+      {
+        "name": "README",
+        "path": "README",
+        "type": "blob",
+        "size": 2348,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/README"
+      },
+      {
+        "name": "charge.rb",
+        "path": "charge.rb",
+        "type": "blob",
+        "size": 1767,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/charge.rb"
+      },
+      {
+        "name": "gateway.rb",
+        "path": "gateway.rb",
+        "type": "blob",
+        "size": 709,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/gateway.rb"
+      },
+      {
+        "name": "gateway.yml.example",
+        "path": "gateway.yml.example",
+        "type": "blob",
+        "size": 254,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/gateway.yml.example"
+      },
+      {
+        "name": "refund.rb",
+        "path": "refund.rb",
+        "type": "blob",
+        "size": 460,
+        "url": "https://github.com/up_the_irons/credit_card_tools/blob/master/refund.rb"
+      }
+    ],
+    "readme": "Credit Card Tools\n=================\n\nThese are a set of ruby scripts for processing credit cards on the command\nline.\n\nSupported processors:\n\n  * PayPal (Business or Premier account required)\n\nRequirements\n------------\n\n  * RubyGems\n  * ActiveMerchant\n\nSetup\n-----\n\nCopy gateway.yml.example to gateway.yml and fill in the fields in that file.\n\nThere is one block for the \"live\" environment, where real credit cards are\ncharged, and one block for the \"test\" environment, which mocks everything\nthrough PayPal's Sandbox and no real money is exchanged.\n\nInstall ActiveMerchant::\n\n  gem install activemerchant\n\nIf the following files are not set executable, you should do::\n\n  chmod 755 charge.rb refund.rb\n\nUsage\n-----\n\nCommands:\n\n  * charge.rb\n  * refund.rb\n\nRun the commands without arguments to see the options.\n\nExample $1.00 charge::\n\n  ./charge.rb 1.00 4111111111111111 02/2012\n\nExample $1.00 refund::\n\n  ./refund.rb 1.00 2TL24258DY409104G\n\nThe second argument in the above example is the Auth ID of the original \ntransaction.\n\nThe output will be a nicely formatted response from PayPal.  The response is\nin YAML format, so you could do further processing with your own scripts \nrelatively easily.\n\nOther Processors\n----------------\n\nActiveMerchant supports a large list of credit card processors / gateways.\nTo use these tools with a gateway besides PayPal, modify gateway.rb to suit\nyour needs.  It should be relatively straight forward.\n\nSee: http://www.activemerchant.org\n\nAuthor\n------\n\nGarry C. Dolley\n\ngdolley [at] NOSPAM- ucla.edu\n\nAIM: garry97531\n\nIRC: I am up_the_irons in #ram, #git and #caboose on Freenode.\n\nCopyright\n---------\n\nCopyright (c) 2008 Garry C. Dolley\n\nThis is free software; you can redistribute it and/or modify it under the\nterms of the GNU General Public License as published by the Free Software\nFoundation; either version 2 of the License, or (at your option) any later \nversion.\n\nThis is distributed in the hope that it will be useful, but WITHOUT ANY\nWARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS\nFOR A PARTICULAR PURPOSE.  See the GNU General Public License for more\ndetails.\n\nYou should have received a copy of the GNU General Public License along with\nthis software; if not, write to the Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA  02110-1301, USA\n",
+    "languages": {
+      "Ruby": 2936
+    }
+  }
+}
