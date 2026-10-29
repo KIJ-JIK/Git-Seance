@@ -1,7 +1,7 @@
 /**
  * app/api/voice/route.ts
  * POST /api/voice
- * Body: { text: string, apiKey?: string, voiceId?: string }
+ * Body: { text: string }
  * Returns: audio/mpeg stream
  */
 
@@ -12,18 +12,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const text = body.text;
-    const customApiKey = (req.headers.get('x-elevenlabs-key') || body.apiKey || '').trim();
-    const customVoiceId = (req.headers.get('x-elevenlabs-voice-id') || body.voiceId || '').trim();
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json({ error: 'text is required' }, { status: 400 });
     }
 
-    const { audio, provider, quotaWarning } = await synthesizeGhostVoice(
-      text,
-      customApiKey || undefined,
-      customVoiceId || undefined
-    );
+    const { audio, provider, quotaWarning } = await synthesizeGhostVoice(text);
 
     const arrayBuffer = audio.buffer.slice(
       audio.byteOffset,

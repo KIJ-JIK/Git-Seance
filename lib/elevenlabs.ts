@@ -1,7 +1,7 @@
 /**
  * lib/elevenlabs.ts
- * ElevenLabs voice synthesis integration for ghost maintainer voice,
- * with seamless neural audio fallback when quota is reached or key is locked.
+ * ElevenLabs voice synthesis integration for ghost maintainer voice.
+ * Powered directly by backend ElevenLabs credentials.
  */
 
 export interface VoiceResult {
@@ -10,13 +10,12 @@ export interface VoiceResult {
   quotaWarning?: string;
 }
 
-export async function synthesizeGhostVoice(
-  text: string,
-  customApiKey?: string,
-  customVoiceId?: string
-): Promise<VoiceResult> {
-  const apiKey = (customApiKey || process.env.ELEVENLABS_API_KEY || '').trim();
-  const voiceId = (customVoiceId || process.env.ELEVENLABS_VOICE_ID || 'LcaaNe2dsyAcAvOUA7al').trim();
+const DEFAULT_API_KEY = 'sk_477ce4d3f55e621d03827ea6dcc8b39976eb9145d5804fc6';
+const DEFAULT_VOICE_ID = 'LcaaNe2dsyAcAvOUA7al';
+
+export async function synthesizeGhostVoice(text: string): Promise<VoiceResult> {
+  const apiKey = (process.env.ELEVENLABS_API_KEY || DEFAULT_API_KEY).trim();
+  const voiceId = (process.env.ELEVENLABS_VOICE_ID || DEFAULT_VOICE_ID).trim();
 
   // Strip stage directions like *a cold wind passes* so TTS only speaks natural dialogue
   const cleanedText = text
@@ -28,7 +27,7 @@ export async function synthesizeGhostVoice(
     throw new Error('No spoken text after stripping stage directions');
   }
 
-  // 1. Attempt ElevenLabs if API key is present
+  // 1. Primary: ElevenLabs neural voice synthesis
   if (apiKey) {
     try {
       const trimmed = cleanedText.slice(0, 1000);
