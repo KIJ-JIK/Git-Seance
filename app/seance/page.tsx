@@ -26,6 +26,7 @@ export default function SeancePage() {
   const [ghostLoading, setGhostLoading] = useState(true);
   const [ofrendaMode, setOfrendaMode] = useState(false);
   const [voiceLoading, setVoiceLoading] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [diffContent, setDiffContent] = useState('');
   const [reviewContent, setReviewContent] = useState('');
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -160,9 +161,6 @@ export default function SeancePage() {
       currentAudioRef.current.currentTime = 0;
       currentAudioRef.current = null;
     }
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
 
     // Detect sound cues in asterisks (e.g. *An echo of forgotten CSS shivers the terminal.*)
     const cueMatch = textToSpeak.match(/\*([^*]+)\*/);
@@ -170,7 +168,7 @@ export default function SeancePage() {
       (window as any).__playCemeterySoundCue(cueMatch[1]);
     }
 
-    // Strip stage directions from spoken voice so TTS doesn't read out "*An echo... shivers...*"
+    // Strip stage directions from spoken voice so TTS only speaks natural dialogue
     const spokenText = textToSpeak
       .replace(/\*[^*]+\*/g, '')
       .replace(/[_#`]/g, '')
@@ -195,18 +193,43 @@ export default function SeancePage() {
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
         currentAudioRef.current = audio;
-        // Catch browser autoplay policy rejection gracefully (no red screen error)
-        audio.play().catch((playErr) => {
-          console.log('[git-seance] Browser autoplay blocked until user clicks on page:', playErr.name);
-          setVoiceLoading(false);
-          if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-            (window as any).__setAmbientDucking(false);
-          }
-        });
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setAutoplayBlocked(false);
+            })
+            .catch((playErr) => {
+              console.log('[git-seance] Browser autoplay blocked until user gesture:', playErr.name);
+              setAutoplayBlocked(true);
+              setVoiceLoading(false);
+              if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
+                (window as any).__setAmbientDucking(false);
+              }
+
+              // Auto-play on the very next user click anywhere on document
+              const handleGesture = () => {
+                if (currentAudioRef.current) {
+                  if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
+                    (window as any).__setAmbientDucking(true);
+                  }
+                  currentAudioRef.current.play().catch(() => {});
+                  setAutoplayBlocked(false);
+                }
+                window.removeEventListener('click', handleGesture);
+                window.removeEventListener('keydown', handleGesture);
+              };
+              window.addEventListener('click', handleGesture, { once: true });
+              window.addEventListener('keydown', handleGesture, { once: true });
+            });
+        }
+
         audio.onended = () => {
           URL.revokeObjectURL(url);
           currentAudioRef.current = null;
           setVoiceLoading(false);
+          setAutoplayBlocked(false);
           // Restore ambient volume after ghost finishes speaking
           if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
             (window as any).__setAmbientDucking(false);
@@ -215,39 +238,8 @@ export default function SeancePage() {
         return;
       }
     } catch (err) {
-      console.warn('Voice API error:', err);
-    }
-
-    // Speech synthesis fallback only if all network audio fails
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(spokenText);
-      const voices = window.speechSynthesis.getVoices();
-      const hauntedVoice = voices.find(
-        (v) =>
-          v.lang.startsWith('en') &&
-          (v.name.includes('Natural') ||
-            v.name.includes('Neural') ||
-            v.name.includes('Google') ||
-            v.name.includes('Daniel') ||
-            v.name.includes('David'))
-      );
-      if (hauntedVoice) utterance.voice = hauntedVoice;
-      utterance.pitch = 0.5;
-      utterance.rate = 0.82;
-      utterance.onend = () => {
-        setVoiceLoading(false);
-        if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-          (window as any).__setAmbientDucking(false);
-        }
-      };
-      utterance.onerror = () => {
-        setVoiceLoading(false);
-        if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-          (window as any).__setAmbientDucking(false);
-        }
-      };
-      window.speechSynthesis.speak(utterance);
-    } else {
+      console.warn('[git-seance] Voice API error:', err);
+    } finally {
       setVoiceLoading(false);
       if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
         (window as any).__setAmbientDucking(false);
@@ -256,6 +248,14 @@ export default function SeancePage() {
   };
 
   const speakLastGhostMessage = async () => {
+    if (currentAudioRef.current && currentAudioRef.current.paused && currentAudioRef.current.src) {
+      if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
+        (window as any).__setAmbientDucking(true);
+      }
+      currentAudioRef.current.play().catch(() => {});
+      setAutoplayBlocked(false);
+      return;
+    }
     const lastGhost = [...messages].reverse().find((m) => m.role === 'ghost');
     if (!lastGhost) return;
     await speakText(lastGhost.content);
@@ -375,6 +375,31 @@ export default function SeancePage() {
         {/* ── CHAT TAB ── */}
         {activeTab === 'chat' && (
           <div className="flex flex-col" style={{ height: 'calc(100vh - 280px)' }}>
+            {autoplayBlocked && (
+              <button
+                onClick={() => {
+                  if (currentAudioRef.current) {
+                    if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
+                      (window as any).__setAmbientDucking(true);
+                    }
+                    currentAudioRef.current.play().catch(() => {});
+                    setAutoplayBlocked(false);
+                  }
+                }}
+                className="bento-pill mb-3 py-2 px-4 flex items-center justify-center gap-2 cursor-pointer w-full text-center transition-all animate-pulse"
+                style={{
+                  background: 'rgba(255, 107, 43, 0.22)',
+                  borderColor: 'var(--spectral)',
+                  color: 'var(--spectral)',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  boxShadow: '0 0 25px rgba(255, 107, 43, 0.45)',
+                }}
+              >
+                <span>🔊 Click here to awaken the ghost's voice (ElevenLabs)</span>
+              </button>
+            )}
+
             <div
               ref={terminalRef}
               className="terminal flex-1 overflow-y-auto mb-3"
@@ -425,10 +450,20 @@ export default function SeancePage() {
               <button
                 onClick={speakLastGhostMessage}
                 disabled={voiceLoading || messages.length === 0}
-                className="btn-ghost"
-                title="Hear the ghost's words (Audio / Speech)"
+                className="btn-ghost flex items-center gap-1.5"
+                style={{
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '16px',
+                  background: 'var(--surface)',
+                  border: '1.5px solid var(--surface-border)',
+                  color: 'var(--spectral)',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+                title="Listen to ElevenLabs Ghost Voice"
               >
                 {voiceLoading ? '…' : '🔊'}
+                <span className="hidden sm:inline">Listen</span>
               </button>
             </div>
           </div>

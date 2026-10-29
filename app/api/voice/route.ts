@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'text is required' }, { status: 400 });
     }
 
-    const { audio, provider, quotaWarning } = await synthesizeGhostVoice(text);
+    const { audio, provider } = await synthesizeGhostVoice(text);
 
     const arrayBuffer = audio.buffer.slice(
       audio.byteOffset,
@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
         'Content-Type': 'audio/mpeg',
         'Content-Length': audio.length.toString(),
         'X-Voice-Provider': provider,
-        ...(quotaWarning ? { 'X-Voice-Warning': quotaWarning } : {}),
       },
     });
   } catch (err: any) {

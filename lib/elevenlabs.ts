@@ -1,13 +1,12 @@
 /**
  * lib/elevenlabs.ts
- * ElevenLabs voice synthesis integration for ghost maintainer voice.
- * Powered directly by backend ElevenLabs credentials.
+ * ElevenLabs neural voice synthesis integration for ghost maintainer voice.
+ * Exclusively powered by ElevenLabs neural models.
  */
 
 export interface VoiceResult {
   audio: Buffer;
-  provider: 'elevenlabs' | 'spectral-fallback';
-  quotaWarning?: string;
+  provider: 'elevenlabs';
 }
 
 const DEFAULT_API_KEY = 'sk_477ce4d3f55e621d03827ea6dcc8b39976eb9145d5804fc6';
@@ -17,81 +16,47 @@ export async function synthesizeGhostVoice(text: string): Promise<VoiceResult> {
   const apiKey = (process.env.ELEVENLABS_API_KEY || DEFAULT_API_KEY).trim();
   const voiceId = (process.env.ELEVENLABS_VOICE_ID || DEFAULT_VOICE_ID).trim();
 
-  // Strip stage directions like *a cold wind passes* so TTS only speaks natural dialogue
+  // Strip stage directions like *a cold wind passes* so TTS only speaks dialogue
   const cleanedText = text
     .replace(/\*[^*]+\*/g, '') // remove *stage directions*
-    .replace(/[_#`]/g, '')     // remove formatting characters
+    .replace(/[_#`]/g, '')     // remove markdown formatting
     .trim();
 
   if (!cleanedText) {
     throw new Error('No spoken text after stripping stage directions');
   }
 
-  // 1. Primary: ElevenLabs neural voice synthesis
-  if (apiKey) {
-    try {
-      const trimmed = cleanedText.slice(0, 1000);
-      const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-        method: 'POST',
-        headers: {
-          'xi-api-key': apiKey,
-          'Content-Type': 'application/json',
-          Accept: 'audio/mpeg',
-        },
-        body: JSON.stringify({
-          text: trimmed,
-          model_id: 'eleven_multilingual_v2',
-          voice_settings: {
-            stability: 0.32,
-            similarity_boost: 0.75,
-            style: 0.35,
-            use_speaker_boost: true,
-          },
-        }),
-      });
+  const trimmed = cleanedText.slice(0, 1000);
 
-      if (res.ok) {
-        const arrayBuffer = await res.arrayBuffer();
-        return {
-          audio: Buffer.from(arrayBuffer),
-          provider: 'elevenlabs',
-        };
-      }
+  // ElevenLabs turbo v2.5 model: fast, ultra-realistic, preserves exact voice design
+  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+    method: 'POST',
+    headers: {
+      'xi-api-key': apiKey,
+      'Content-Type': 'application/json',
+      Accept: 'audio/mpeg',
+    },
+    body: JSON.stringify({
+      text: trimmed,
+      model_id: 'eleven_turbo_v2_5',
+      voice_settings: {
+        stability: 0.5,
+        similarity_boost: 0.85,
+        style: 0.0,
+        use_speaker_boost: true,
+      },
+    }),
+  });
 
-      const errText = await res.text();
-      console.warn(`[git-seance] ElevenLabs ${res.status}: ${errText}. Falling back to neural spectral audio.`);
-    } catch (err: any) {
-      console.warn('[git-seance] ElevenLabs network error, falling back:', err?.message || err);
-    }
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error(`[git-seance] ElevenLabs API error ${res.status}:`, errText);
+    throw new Error(`ElevenLabs error: ${res.status} — ${errText}`);
   }
 
-  // 2. High-quality neural audio fallback
-  try {
-    const chunks = cleanedText.match(/.{1,160}(\s|$)/g) || [cleanedText.slice(0, 300)];
-    const buffers: Buffer[] = [];
-    for (const chunk of chunks.slice(0, 3)) {
-      const q = encodeURIComponent(chunk.trim());
-      const res = await fetch(
-        `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${q}`,
-        {
-          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-        }
-      );
-      if (res.ok) {
-        const chunkBuf = await res.arrayBuffer();
-        buffers.push(Buffer.from(chunkBuf));
-      }
-    }
-    if (buffers.length > 0) {
-      return {
-        audio: Buffer.concat(buffers),
-        provider: 'spectral-fallback',
-        quotaWarning: 'ElevenLabs quota exhausted or locked; falling back to spectral voice.',
-      };
-    }
-  } catch (err) {
-    console.warn('[git-seance] Backup TTS failed:', err);
-  }
-
-  throw new Error('All voice synthesis providers failed');
+  const arrayBuffer = await res.arrayBuffer();
+  return {
+    audio: Buffer.from(arrayBuffer),
+    provider: 'elevenlabs',
+  };
 }
