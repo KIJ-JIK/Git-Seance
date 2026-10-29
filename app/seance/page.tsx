@@ -28,10 +28,25 @@ export default function SeancePage() {
   const [voiceLoading, setVoiceLoading] = useState(false);
   const [diffContent, setDiffContent] = useState('');
   const [reviewContent, setReviewContent] = useState('');
+  const [elevenLabsKey, setElevenLabsKey] = useState<string>('');
+  const [keyInput, setKeyInput] = useState<string>('');
+  const [isKeyModalOpen, setIsKeyModalOpen] = useState(false);
+  const [voiceProvider, setVoiceProvider] = useState<'elevenlabs' | 'spectral' | 'browser'>('spectral');
   const terminalRef = useRef<HTMLDivElement>(null);
 
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const personaGeneratedRef = useRef(false);
+
+  // Initialize ElevenLabs key from localStorage if available
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedKey = localStorage.getItem('git_seance_elevenlabs_key');
+      if (savedKey) {
+        setElevenLabsKey(savedKey);
+        setKeyInput(savedKey);
+      }
+    }
+  }, []);
 
   // Load repo from sessionStorage and generate persona
   useEffect(() => {
@@ -180,10 +195,20 @@ export default function SeancePage() {
     try {
       const res = await fetch('/api/voice', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(elevenLabsKey ? { 'x-elevenlabs-key': elevenLabsKey } : {}),
+        },
         body: JSON.stringify({ text: spokenText }),
       });
       if (res.ok) {
+        const providerHeader = res.headers.get('X-Voice-Provider');
+        if (providerHeader === 'elevenlabs') {
+          setVoiceProvider('elevenlabs');
+        } else {
+          setVoiceProvider('spectral');
+        }
+
         const blob = await res.blob();
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
@@ -211,11 +236,23 @@ export default function SeancePage() {
       console.warn('Voice API error:', err);
     }
 
-    // Speech synthesis fallback only if ElevenLabs fails
+    // Speech synthesis fallback only if all network audio fails
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      setVoiceProvider('browser');
       const utterance = new SpeechSynthesisUtterance(spokenText);
-      utterance.pitch = 0.6;
-      utterance.rate = 0.85;
+      const voices = window.speechSynthesis.getVoices();
+      const hauntedVoice = voices.find(
+        (v) =>
+          v.lang.startsWith('en') &&
+          (v.name.includes('Natural') ||
+            v.name.includes('Neural') ||
+            v.name.includes('Google') ||
+            v.name.includes('Daniel') ||
+            v.name.includes('David'))
+      );
+      if (hauntedVoice) utterance.voice = hauntedVoice;
+      utterance.pitch = 0.5;
+      utterance.rate = 0.82;
       utterance.onend = () => {
         setVoiceLoading(false);
         if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
@@ -299,6 +336,19 @@ export default function SeancePage() {
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsKeyModalOpen(true)}
+              className="px-2.5 py-1 text-xs rounded-full border transition-all flex items-center gap-1.5 cursor-pointer"
+              style={{
+                background: elevenLabsKey ? 'rgba(74, 222, 128, 0.12)' : 'rgba(255, 107, 43, 0.12)',
+                borderColor: elevenLabsKey ? 'rgba(74, 222, 128, 0.4)' : 'rgba(255, 107, 43, 0.4)',
+                color: elevenLabsKey ? '#4ade80' : 'var(--spectral)',
+                fontFamily: 'var(--font-mono)',
+              }}
+              title="Configure ElevenLabs Voice Key"
+            >
+              <span>{elevenLabsKey ? '🔊 ElevenLabs: Unlocked' : '🔑 Unlock Voice (ElevenLabs)'}</span>
+            </button>
             <ModeToggle />
             <CemeteryAmbience />
             <button onClick={() => router.push('/')} className="btn-ghost">
@@ -513,6 +563,109 @@ export default function SeancePage() {
           <p className="ghost-message" style={{ whiteSpace: 'pre-wrap' }}>{reviewContent}</p>
         </div>
       )}
+
+        {/* ElevenLabs API Key Unlock Modal */}
+        {isKeyModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <div
+              className="bento-card max-w-md w-full p-6 relative"
+              style={{
+                background: '#0d0d12',
+                border: '1px solid var(--surface-border)',
+                borderRadius: '16px',
+                boxShadow: '0 0 35px rgba(255, 107, 43, 0.25)',
+              }}
+            >
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  color: 'var(--spectral)',
+                  fontSize: '1.25rem',
+                  marginBottom: '0.75rem',
+                }}
+              >
+                🎙️ Unlock ElevenLabs Voice
+              </h3>
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  color: 'var(--ash)',
+                  marginBottom: '1.25rem',
+                  lineHeight: '1.4',
+                }}
+              >
+                Enter your ElevenLabs API Key to generate custom neural voices directly from ElevenLabs. 
+                If no key is entered or the quota runs out, Git Séance automatically routes through the backup spectral neural voice!
+              </p>
+
+              <label
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--ash)',
+                  display: 'block',
+                  marginBottom: '0.35rem',
+                }}
+              >
+                ElevenLabs API Key
+              </label>
+              <input
+                type="password"
+                placeholder="sk_..."
+                value={keyInput}
+                onChange={(e) => setKeyInput(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg mb-4 text-sm font-mono"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid var(--surface-border)',
+                  color: 'white',
+                  outline: 'none',
+                }}
+              />
+
+              <div className="flex items-center justify-between gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    localStorage.removeItem('git_seance_elevenlabs_key');
+                    setElevenLabsKey('');
+                    setKeyInput('');
+                    setIsKeyModalOpen(false);
+                  }}
+                  className="px-3 py-1.5 rounded text-xs font-mono cursor-pointer"
+                  style={{ color: '#ef4444', background: 'rgba(239, 68, 68, 0.1)' }}
+                >
+                  Clear Key
+                </button>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsKeyModalOpen(false)}
+                    className="px-3 py-1.5 rounded text-xs font-mono text-zinc-400 hover:text-white cursor-pointer"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (keyInput.trim()) {
+                        localStorage.setItem('git_seance_elevenlabs_key', keyInput.trim());
+                        setElevenLabsKey(keyInput.trim());
+                      }
+                      setIsKeyModalOpen(false);
+                      speakLastGhostMessage();
+                    }}
+                    className="px-4 py-1.5 rounded text-xs font-mono font-bold cursor-pointer"
+                    style={{ background: 'var(--spectral)', color: '#000' }}
+                  >
+                    Save & Test Voice
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,9 +3,11 @@
 import { useState, useEffect } from 'react';
 
 export default function ModeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [isOfrenda, setIsOfrenda] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Check saved preference or initial body class
     const saved = localStorage.getItem('git_seance_mode');
     if (saved === 'ofrenda') {
@@ -33,10 +35,11 @@ export default function ModeToggle() {
       onClick={toggleMode}
       className="btn-ghost flex items-center gap-2 select-none"
       style={{ padding: '0.45rem 1rem', fontSize: '0.78rem' }}
-      title={isOfrenda ? 'Switch to Midnight Séance Mode (Image 1)' : 'Switch to Fiery Ofrenda Mode (Image 2)'}
+      title={mounted && isOfrenda ? 'Switch to Midnight Séance Mode' : 'Switch to Fiery Ofrenda Mode'}
+      suppressHydrationWarning
     >
       <span className="w-2 h-2 rounded-full" style={{ backgroundColor: 'var(--phosphor)' }} />
-      <span>{isOfrenda ? '🕯 Séance Mode' : '🌸 Ofrenda Mode'}</span>
+      <span>{mounted && isOfrenda ? '🕯 Séance Mode' : '🌸 Ofrenda Mode'}</span>
     </button>
   );
 }

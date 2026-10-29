@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CemeteryAmbience from '@/components/CemeteryAmbience';
 import DynamicGhostBackground from '@/components/DynamicGhostBackground';
@@ -13,6 +13,27 @@ export default function HomePage() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Item #50 & #56: Pre-fill URL from query parameters (e.g. from Graveyard Summon button)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlParam = params.get('url');
+      if (urlParam) {
+        setUrl(urlParam.trim());
+      }
+    }
+  }, []);
+
+  // Item #81: Clean and format input when user leaves field
+  const handleBlur = () => {
+    if (!url.trim()) return;
+    let cleaned = url.trim();
+    if (!cleaned.startsWith('http://') && !cleaned.startsWith('https://') && cleaned.includes('github.com')) {
+      cleaned = `https://${cleaned}`;
+    }
+    setUrl(cleaned);
+  };
 
   const handleSummon = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,12 +155,15 @@ export default function HomePage() {
                       {'>'}
                     </span>
                     <input
-                      type="text"
+                      type="url"
+                      inputMode="url"
+                      aria-label="GitHub repository URL"
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
+                      onBlur={handleBlur}
                       placeholder="https://github.com/owner/abandoned-repo"
                       disabled={loading}
-                      autoComplete="off"
+                      autoComplete="url"
                       autoCorrect="off"
                       autoCapitalize="off"
                       spellCheck={false}
@@ -150,7 +174,7 @@ export default function HomePage() {
                         outline: 'none',
                         color: 'var(--spectral)',
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.95rem',
+                        fontSize: '1rem',
                         width: '100%',
                         caretColor: 'var(--phosphor)',
                       }}
@@ -238,13 +262,14 @@ export default function HomePage() {
                 key={r.url}
                 onClick={() => setUrl(r.url)}
                 suppressHydrationWarning
-                className="bento-card"
+                className="bento-card inline-flex items-center justify-center"
                 style={{
                   color: 'var(--spectral)',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  padding: '0.4rem 0.85rem',
-                  borderRadius: '12px',
+                  fontSize: '0.8rem',
+                  padding: '0.65rem 1rem',
+                  minHeight: '44px',
+                  borderRadius: '14px',
                   cursor: 'pointer',
                 }}
               >

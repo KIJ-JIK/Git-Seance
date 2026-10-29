@@ -49,30 +49,49 @@ async function callGroq(prompt: string, systemPrompt: string): Promise<string> {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) throw new Error('GROQ_API_KEY not set');
 
-  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: 'gemma2-9b-it',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: prompt },
-      ],
-      temperature: 0.85,
-      max_tokens: 1024,
-    }),
-    signal: AbortSignal.timeout(30_000),
-  });
+  const modelsToTry = [
+    process.env.GROQ_MODEL,
+    'openai/gpt-oss-120b',
+    'openai/gpt-oss-20b',
+    'qwen/qwen3.8-27b',
+  ].filter(Boolean) as string[];
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Groq error: ${res.status} — ${err}`);
+  let lastError: any = null;
+  for (const model of modelsToTry) {
+    try {
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+          'User-Agent': 'git-seance',
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: prompt },
+          ],
+          temperature: 0.85,
+          max_tokens: 1024,
+        }),
+        signal: AbortSignal.timeout(30_000),
+      });
+
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(`Groq error (${model}): ${res.status} — ${err}`);
+      }
+      const data = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (content) return content;
+    } catch (err: any) {
+      lastError = err;
+      console.warn(`[git-seance] Groq model ${model} failed, trying next:`, err?.message || err);
+    }
   }
-  const data = await res.json();
-  return data.choices?.[0]?.message?.content ?? '';
+
+  throw lastError ?? new Error('All Groq models failed');
 }
 
 export async function callAI(prompt: string, systemPrompt: string): Promise<string> {
