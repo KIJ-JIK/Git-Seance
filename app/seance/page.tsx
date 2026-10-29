@@ -288,13 +288,32 @@ export default function SeancePage() {
   return (
     <div
       className="min-h-screen flex flex-col p-4 sm:p-6 relative overflow-hidden"
-      style={{ background: 'var(--bg)' }}
+      style={{
+        background: 'var(--bg)',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
     >
       {/* Preserved Dynamic Ghost Background */}
       <DynamicGhostBackground opacity={0.35} />
 
       {/* Image 1 Bento Master Frame */}
-      <div className="bento-master-frame max-w-6xl w-full mx-auto p-5 sm:p-8 flex-1 flex flex-col relative z-10">
+      <div
+        className="bento-master-frame max-w-6xl w-full mx-auto p-5 sm:p-8 flex-1 flex flex-col relative z-10"
+        style={{
+          maxWidth: '72rem',
+          width: '100%',
+          margin: '0 auto',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          zIndex: 10,
+        }}
+      >
         {/* Header */}
         <header className="flex items-center justify-between mb-4 pb-4 border-b border-[#FF6B2B]/20">
           <div className="flex items-center gap-3">

@@ -69,19 +69,34 @@ export default function HomePage() {
   return (
     <main
       className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 relative overflow-hidden"
-      style={{ background: 'var(--bg)' }}
+      style={{
+        background: 'var(--bg)',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
     >
       {/* Preserved High-Fidelity 144-Frame Dynamic Ghost Background */}
       <DynamicGhostBackground isSummoning={loading} opacity={0.6} />
 
       {/* Ambience Audio Control & Theme Toggle Header - Placed in-flow above the bento frame to prevent overlap */}
-      <header className="w-full max-w-4xl flex items-center justify-end gap-3 mb-4 relative z-30">
+      <header
+        className="w-full max-w-4xl flex items-center justify-end gap-3 mb-4 relative z-30"
+        style={{ width: '100%', maxWidth: '56rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.75rem', position: 'relative', zIndex: 30 }}
+      >
         <ModeToggle />
         <CemeteryAmbience />
       </header>
 
       {/* Image 1 Bento Master Frame Container */}
-      <div className="bento-master-frame w-full max-w-4xl relative z-10 p-6 sm:p-10 flex flex-col items-center">
+      <div
+        className="bento-master-frame w-full max-w-4xl relative z-10 p-6 sm:p-10 flex flex-col items-center"
+        style={{ width: '100%', maxWidth: '56rem', position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
         
         {/* Top Pill Status Badge */}
         <div className="bento-pill mb-6">

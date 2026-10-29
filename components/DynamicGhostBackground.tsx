@@ -141,7 +141,19 @@ export default function DynamicGhostBackground({
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden select-none"
-      style={{ zIndex: 0 }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
+        overflow: 'hidden',
+        userSelect: 'none',
+        zIndex: 0,
+      }}
       aria-hidden="true"
     >
       {/* Dynamic Hardware/Ghost Canvas */}
@@ -149,6 +161,10 @@ export default function DynamicGhostBackground({
         ref={canvasRef}
         className="w-full h-full object-cover transition-opacity duration-1000"
         style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
           opacity: loadedCount > 0 ? opacity : 0,
           filter: 'contrast(1.08) brightness(0.9)',
         }}
