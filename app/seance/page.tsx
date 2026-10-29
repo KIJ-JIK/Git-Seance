@@ -32,6 +32,7 @@ export default function SeancePage() {
   const terminalRef = useRef<HTMLDivElement>(null);
 
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  const lastVoiceBufferRef = useRef<ArrayBuffer | null>(null);
   const personaGeneratedRef = useRef(false);
 
   // Clear any legacy client-side keys so backend keys are strictly used
@@ -155,7 +156,10 @@ export default function SeancePage() {
   const speakText = async (textToSpeak: string) => {
     if (!textToSpeak) return;
 
-    // Immediately cancel any previous voice playing (prevents overlapping/echoing voices)
+    // Immediately stop any previous voice playing (prevents overlapping/echoing voices)
+    if (typeof window !== 'undefined' && (window as any).__stopGhostVoiceAudio) {
+      (window as any).__stopGhostVoiceAudio();
+    }
     if (currentAudioRef.current) {
       currentAudioRef.current.pause();
       currentAudioRef.current.currentTime = 0;
@@ -177,10 +181,6 @@ export default function SeancePage() {
     if (!spokenText) return;
 
     setVoiceLoading(true);
-    // Duck background ambience so ghost speech is 100% prominent & easy to hear
-    if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-      (window as any).__setAmbientDucking(true);
-    }
 
     try {
       const res = await fetch('/api/voice', {
@@ -188,73 +188,66 @@ export default function SeancePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: spokenText }),
       });
+
       if (res.ok) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        currentAudioRef.current = audio;
+        const arrayBuffer = await res.arrayBuffer();
+        lastVoiceBufferRef.current = arrayBuffer;
 
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              setAutoplayBlocked(false);
-            })
-            .catch((playErr) => {
-              console.log('[git-seance] Browser autoplay blocked until user gesture:', playErr.name);
-              setAutoplayBlocked(true);
-              setVoiceLoading(false);
-              if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-                (window as any).__setAmbientDucking(false);
-              }
-
-              // Auto-play on the very next user click anywhere on document
-              const handleGesture = () => {
-                if (currentAudioRef.current) {
-                  if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-                    (window as any).__setAmbientDucking(true);
-                  }
-                  currentAudioRef.current.play().catch(() => {});
-                  setAutoplayBlocked(false);
-                }
-                window.removeEventListener('click', handleGesture);
-                window.removeEventListener('keydown', handleGesture);
-              };
-              window.addEventListener('click', handleGesture, { once: true });
-              window.addEventListener('keydown', handleGesture, { once: true });
-            });
+        // Route through active Web Audio AudioContext (immune to browser HTML5 audio autoplay blocks)
+        let played = false;
+        if (typeof window !== 'undefined' && (window as any).__playGhostVoiceAudio) {
+          played = await (window as any).__playGhostVoiceAudio(arrayBuffer, () => {
+            setVoiceLoading(false);
+          });
         }
 
-        audio.onended = () => {
-          URL.revokeObjectURL(url);
-          currentAudioRef.current = null;
-          setVoiceLoading(false);
+        if (played) {
           setAutoplayBlocked(false);
-          // Restore ambient volume after ghost finishes speaking
-          if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-            (window as any).__setAmbientDucking(false);
+          setVoiceLoading(false);
+          return;
+        }
+
+        // Context is either suspended or Web Audio not ready — unblock on next user gesture
+        setAutoplayBlocked(true);
+        setVoiceLoading(false);
+
+        const handleGesture = async () => {
+          if (typeof window !== 'undefined' && (window as any).__resumeAudioContext) {
+            await (window as any).__resumeAudioContext();
           }
+          if (lastVoiceBufferRef.current && typeof window !== 'undefined' && (window as any).__playGhostVoiceAudio) {
+            await (window as any).__playGhostVoiceAudio(lastVoiceBufferRef.current, () => {
+              setVoiceLoading(false);
+            });
+            setAutoplayBlocked(false);
+          }
+          window.removeEventListener('click', handleGesture);
+          window.removeEventListener('keydown', handleGesture);
         };
+        window.addEventListener('click', handleGesture, { once: true });
+        window.addEventListener('keydown', handleGesture, { once: true });
         return;
       }
     } catch (err) {
       console.warn('[git-seance] Voice API error:', err);
     } finally {
       setVoiceLoading(false);
-      if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-        (window as any).__setAmbientDucking(false);
-      }
     }
   };
 
   const speakLastGhostMessage = async () => {
-    if (currentAudioRef.current && currentAudioRef.current.paused && currentAudioRef.current.src) {
-      if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-        (window as any).__setAmbientDucking(true);
+    // Replay already fetched voice buffer instantly via Web Audio without consuming credits!
+    if (typeof window !== 'undefined' && (window as any).__resumeAudioContext) {
+      await (window as any).__resumeAudioContext();
+    }
+    if (lastVoiceBufferRef.current && typeof window !== 'undefined' && (window as any).__playGhostVoiceAudio) {
+      const ok = await (window as any).__playGhostVoiceAudio(lastVoiceBufferRef.current, () => {
+        setVoiceLoading(false);
+      });
+      if (ok) {
+        setAutoplayBlocked(false);
+        return;
       }
-      currentAudioRef.current.play().catch(() => {});
-      setAutoplayBlocked(false);
-      return;
     }
     const lastGhost = [...messages].reverse().find((m) => m.role === 'ghost');
     if (!lastGhost) return;
@@ -377,15 +370,7 @@ export default function SeancePage() {
           <div className="flex flex-col" style={{ height: 'calc(100vh - 280px)' }}>
             {autoplayBlocked && (
               <button
-                onClick={() => {
-                  if (currentAudioRef.current) {
-                    if (typeof window !== 'undefined' && (window as any).__setAmbientDucking) {
-                      (window as any).__setAmbientDucking(true);
-                    }
-                    currentAudioRef.current.play().catch(() => {});
-                    setAutoplayBlocked(false);
-                  }
-                }}
+                onClick={speakLastGhostMessage}
                 className="bento-pill mb-3 py-2 px-4 flex items-center justify-center gap-2 cursor-pointer w-full text-center transition-all animate-pulse"
                 style={{
                   background: 'rgba(255, 107, 43, 0.22)',

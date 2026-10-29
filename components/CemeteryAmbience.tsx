@@ -22,6 +22,7 @@ export default function CemeteryAmbience() {
   const loopTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scheduledTimersRef = useRef<NodeJS.Timeout[]>([]);
   const hasStartedRef = useRef(false);
+  const activeVoiceSourceRef = useRef<AudioBufferSourceNode | null>(null);
 
   // Initialize or resume audio system
   const initAudio = async () => {
@@ -389,9 +390,106 @@ export default function CemeteryAmbience() {
       }
     };
 
+    // 3. Play ghost speech audio stream through the active Web Audio context
+    (window as any).__playGhostVoiceAudio = async (
+      arrayBuffer: ArrayBuffer,
+      onEnded?: () => void
+    ): Promise<boolean> => {
+      try {
+        if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
+          await initAudio();
+        }
+        if (!audioCtxRef.current) return false;
+        const ctx = audioCtxRef.current;
+        if (ctx.state === 'suspended') {
+          await ctx.resume().catch(() => {});
+        }
+
+        // Stop any currently playing voice
+        if (activeVoiceSourceRef.current) {
+          try {
+            activeVoiceSourceRef.current.stop();
+          } catch {}
+          activeVoiceSourceRef.current = null;
+        }
+
+        // Native Web Audio MP3 decoder
+        const decodedBuffer = await ctx.decodeAudioData(arrayBuffer.slice(0));
+        const source = ctx.createBufferSource();
+        source.buffer = decodedBuffer;
+
+        const voiceGain = ctx.createGain();
+        voiceGain.gain.value = 1.0;
+        source.connect(voiceGain);
+        voiceGain.connect(ctx.destination);
+
+        activeVoiceSourceRef.current = source;
+
+        // Auto-duck ambient background while ghost speaks
+        if ((window as any).__setAmbientDucking) {
+          (window as any).__setAmbientDucking(true);
+        }
+
+        source.onended = () => {
+          if (activeVoiceSourceRef.current === source) {
+            activeVoiceSourceRef.current = null;
+          }
+          if ((window as any).__setAmbientDucking) {
+            (window as any).__setAmbientDucking(false);
+          }
+          if (onEnded) onEnded();
+        };
+
+        source.start(0);
+
+        // If context remains suspended pending gesture, queue resume on next interaction
+        if (ctx.state === 'suspended') {
+          const resumeOnGesture = () => {
+            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+              audioCtxRef.current.resume().catch(() => {});
+            }
+            window.removeEventListener('click', resumeOnGesture);
+            window.removeEventListener('keydown', resumeOnGesture);
+          };
+          window.addEventListener('click', resumeOnGesture, { once: true });
+          window.addEventListener('keydown', resumeOnGesture, { once: true });
+          return false;
+        }
+
+        return true;
+      } catch (err) {
+        console.error('[git-seance] Web Audio decode error:', err);
+        return false;
+      }
+    };
+
+    (window as any).__resumeAudioContext = async () => {
+      if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
+        await initAudio();
+      }
+      if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+        await audioCtxRef.current.resume().catch(() => {});
+      }
+    };
+
+    (window as any).__stopGhostVoiceAudio = () => {
+      if (activeVoiceSourceRef.current) {
+        try {
+          activeVoiceSourceRef.current.stop();
+        } catch {}
+        activeVoiceSourceRef.current = null;
+      }
+      if ((window as any).__setAmbientDucking) {
+        (window as any).__setAmbientDucking(false);
+      }
+    };
+
     return () => {
       delete (window as any).__playCemeterySoundCue;
       delete (window as any).__setAmbientDucking;
+      delete (window as any).__playGhostVoiceAudio;
+      delete (window as any).__resumeAudioContext;
+      delete (window as any).__stopGhostVoiceAudio;
     };
   }, []);
 
